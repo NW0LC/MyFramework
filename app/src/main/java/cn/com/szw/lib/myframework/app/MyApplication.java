@@ -1,14 +1,7 @@
 package cn.com.szw.lib.myframework.app;
 
 
-import android.annotation.SuppressLint;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.graphics.Color;
-import android.os.Process;
 import android.support.multidex.MultiDexApplication;
-import android.util.Log;
 
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.Utils;
@@ -19,19 +12,13 @@ import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.cookie.store.PersistentCookieStore;
 import com.lzy.okgo.model.HttpHeaders;
 import com.lzy.okgo.model.HttpParams;
-import com.qihoo.appstore.common.updatesdk.lib.UpdateHelper;
-import com.xiaomi.channel.commonutils.logger.LoggerInterface;
-import com.xiaomi.mipush.sdk.Logger;
-import com.xiaomi.mipush.sdk.MiPushClient;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.logging.Level;
 
 import cat.ereza.customactivityoncrash.CustomActivityOnCrash;
 import cn.com.szw.lib.myframework.entities.User;
-import cn.jpush.android.api.JPushInterface;
 import io.realm.Realm;
 import okhttp3.Cache;
 import okhttp3.Interceptor;
@@ -66,63 +53,10 @@ public abstract class MyApplication extends MultiDexApplication implements AbsAp
         Utils.init(this);
         Realm.init(this);
         spUtils = new SPUtils("szw");
-        JPushInterface.init(this);
-        JPushInterface.setDebugMode(true);
         initOkHttp();
         //Install  程序崩溃日志初始化
         CustomActivityOnCrash.install(this);
 
-        //Now initialize your error handlers as normal
-        //i.e., ACRA.init(this);
-        //or Fabric.with(this, new Crashlytics())
-        initMiPush();
-
-        UpdateHelper.getInstance().init(getApplicationContext(), Color.parseColor("#0A93DB"));
-        UpdateHelper.getInstance().autoUpdate(getPackageName(),false,120000);
-
-//        BDAutoUpdateSDK.uiUpdateAction(getApplicationContext(), new UICheckUpdateCallback() {
-//            @Override
-//            public void onCheckComplete() {
-//
-//            }
-//        });
-    }
-    private void initMiPush() {
-        //初始化push推送服务
-        if(shouldInit()) {
-            MiPushClient.registerPush(this, APP_ID, APP_KEY);
-        }
-        //打开Log
-        LoggerInterface newLogger = new LoggerInterface() {
-            @Override
-            public void setTag(String tag) {
-                // ignore
-            }
-            @SuppressLint("LongLogTag")
-            @Override
-            public void log(String content, Throwable t) {
-                Log.d(TAG, content, t);
-            }
-            @SuppressLint("LongLogTag")
-            @Override
-            public void log(String content) {
-                Log.d(TAG, content);
-            }
-        };
-        Logger.setLogger(this, newLogger);
-    }
-
-    private boolean shouldInit() {
-        ActivityManager am = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE));
-        List<RunningAppProcessInfo> processInfos = am.getRunningAppProcesses();
-        String mainProcessName = getPackageName();
-        int myPid = Process.myPid();
-        for (RunningAppProcessInfo info : processInfos) {
-            if (info.pid == myPid && mainProcessName.equals(info.processName)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private void initOkHttp(){
