@@ -53,7 +53,7 @@ dependencies {
     //崩溃dialog
     compile rootProject.ext.dependencies.customactivityoncrash
     // dialog
-    compile project(rootProject.ext.dependencies.CommonAlertPop)
+//    compile project(rootProject.ext.dependencies.CommonAlertPop)
     compile rootProject.ext.dependencies.materialdialog
     // tableLayout
     compile rootProject.ext.dependencies.FlycoTabLayout_Lib

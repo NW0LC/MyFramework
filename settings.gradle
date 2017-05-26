@@ -1,1 +1,1 @@
-include ':app', ':CommonAlertPop'
+include ':app'
