@@ -30,12 +30,6 @@ import okhttp3.Response;
  * on 2016/6/28.
  */
 public abstract class MyApplication extends MultiDexApplication implements AbsApplication{
-//    小米推送
-    public static final String APP_ID = "2882303761517527884";
-    public static final String APP_KEY = "5691752720884";
-    public static final String TAG =MyApplication.class.getPackage().getName();
-//    小米推送
-
     /**
      * 加盐
      */
