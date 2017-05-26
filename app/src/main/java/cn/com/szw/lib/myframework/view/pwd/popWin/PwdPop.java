@@ -9,7 +9,6 @@ import android.view.animation.TranslateAnimation;
 import com.blankj.utilcode.util.ScreenUtils;
 
 import cn.com.szw.lib.myframework.R;
-import cn.com.szw.lib.myframework.view.pwd.PwdGetCodeActivity;
 import cn.com.szw.lib.myframework.view.pwd.widget.OnPasswordInputFinish;
 import cn.com.szw.lib.myframework.view.pwd.widget.PasswordPopView;
 import razerdp.basepopup.BasePopupWindow;

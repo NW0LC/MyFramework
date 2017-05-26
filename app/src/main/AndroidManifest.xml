@@ -10,8 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Base">
-        <activity android:name=".view.pwd.PwdGetCodeActivity"/>
-        <activity android:name=".view.pwd.PwdSetActivity"/>
         <service android:name=".service.BaseDataService"/>
     </application>
 
