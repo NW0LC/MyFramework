@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+//apply plugin: 'io.fabric'
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "cn.com.szw.lib.myframework"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 101
+        versionName "1.0.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile(rootProject.ext.dependencies.espresso, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile rootProject.ext.dependencies.appcompatV7
+    compile rootProject.ext.dependencies.design
+    testCompile rootProject.ext.dependencies.junit
+
+    //分包错误包
+    compile rootProject.ext.dependencies.multidex
+    //轮播
+    compile rootProject.ext.dependencies.rollviewpager
+    //沉浸状态栏
+    compile rootProject.ext.dependencies.systembartint
+    //小工具
+    compile rootProject.ext.dependencies.utilcode
+    //圆头像SimpleDraweeView
+    compile rootProject.ext.dependencies.SimpleDraweeView
+    //回调
+    compile rootProject.ext.dependencies.rxbus
+    //注解
+    compile rootProject.ext.dependencies.butterknife
+    //注解附件
+    compile rootProject.ext.dependencies.butterknifeCompiler
+    //okHttp
+    compile rootProject.ext.dependencies.okgo
+    //解析json
+    compile rootProject.ext.dependencies.gson
+    compile rootProject.ext.dependencies.fastJson
+    //崩溃dialog
+    compile rootProject.ext.dependencies.customactivityoncrash
+    // dialog
+    compile project(rootProject.ext.dependencies.CommonAlertPop)
+    compile rootProject.ext.dependencies.materialdialog
+    // tableLayout
+    compile rootProject.ext.dependencies.FlycoTabLayout_Lib
+    //加载图片
+    compile rootProject.ext.dependencies.glide
+    compile rootProject.ext.dependencies.ImagePicker
+    //上下滑动选择器
+    compile rootProject.ext.dependencies.pickerview
+    // recyclerView adapter封装类
+    compile rootProject.ext.dependencies.BaseRecyclerViewAdapterHelper
+    //权限申请
+    compile rootProject.ext.dependencies.permission
+    //画板
+    compile rootProject.ext.dependencies.AndroidDrawingView
+    //带header的viewpager
+    compile rootProject.ext.dependencies.scrollable
+    //通用popWindow
+    compile rootProject.ext.dependencies.BasePopup
+    //星星之间的间距
+    compile rootProject.ext.dependencies.xlhratingbar_lib
+    //类似相对布局
+    compile rootProject.ext.dependencies.constraintlayout
+    //webView
+    compile rootProject.ext.dependencies.AdvancedWebView
+//    侧滑删除
+    compile rootProject.ext.dependencies.SwipeDelMenuLayout
+//    俗名：垂直跑马灯学名：垂直翻页公告
+    compile rootProject.ext.dependencies.marqueeview
+//    产品标签
+    compile rootProject.ext.dependencies.flowlayout
+//    圆圈加数字指示
+    compile rootProject.ext.dependencies.circleNum
+//    蓝牙
+    compile rootProject.ext.dependencies.bluetooth
+}

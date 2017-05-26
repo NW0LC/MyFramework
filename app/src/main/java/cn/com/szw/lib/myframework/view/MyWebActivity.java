@@ -1,0 +1,220 @@
+package cn.com.szw.lib.myframework.view;
+
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import butterknife.BindView;
+import cn.com.exz.beefrog.R;
+import cn.com.exz.beefrog.base.BaseActivity;
+import im.delight.android.webview.AdvancedWebView;
+
+/**
+ * Created by 史忠文
+ * on 2017/3/15.
+ */
+
+public class MyWebActivity extends BaseActivity implements AdvancedWebView.Listener {
+    @BindView(R.id.mWebView)
+    AdvancedWebView mWebView;
+    @BindView(R.id.mLeft)
+    TextView mLeft;
+    @BindView(R.id.mTitle)
+    TextView mTitle;
+    @BindView(R.id.mRight)
+    TextView mRight;
+    @BindView(R.id.mRightImg)
+    ImageView mRightImg;
+    @BindView(R.id.mLeftImg)
+    ImageView mLeftImg;
+    @BindView(R.id.parent_lay)
+    RelativeLayout parentLay;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.progressBar)
+    ProgressBar mProgressBar;
+    public static String Intent_Url="info";
+    public static String Intent_Title="name";
+    private boolean isAnimStart = false;
+    private int currentProgress;
+    @Override
+    public boolean initToolbar() {
+        mTitle.setTextSize(18);
+        mTitle.setTextColor(ContextCompat.getColor(this, R.color.yellow));
+        toolbar.setContentInsetsAbsolute(0, 0);
+        mLeftImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mWebView.onBackPressed()) {
+                    finish();
+                }
+            }
+        });
+        mTitle.setText(getIntent().getStringExtra(Intent_Title));
+        setSupportActionBar(toolbar);
+        return false;
+    }
+
+    @Override
+    public int setInflateId() {
+        return R.layout.activity_my_web;
+    }
+
+    @Override
+    public void init() {
+        mWebView.setListener(this, this);
+        mWebView.loadUrl(getIntent().getStringExtra(Intent_Url));
+        // 支持js
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.app_bg));
+        // 拦截url
+        mWebView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                mProgressBar.setVisibility(View.VISIBLE);
+                mProgressBar.setAlpha(1.0f);
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                return true;   // 在当前webview内部打开url
+            }
+        });
+        // 获取网页加载进度
+        mWebView.setWebChromeClient(new WebChromeClient() {
+
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                currentProgress = mProgressBar.getProgress();
+                if (newProgress >= 100 && !isAnimStart) {
+                    // 防止调用多次动画
+                    isAnimStart = true;
+                    mProgressBar.setProgress(newProgress);
+                    // 开启属性动画让进度条平滑消失
+                    startDismissAnimation(mProgressBar.getProgress());
+                } else {
+                    // 开启属性动画让进度条平滑递增
+                    startProgressAnimation(newProgress);
+                }
+            }
+        });
+
+    }
+    /**
+     * progressBar递增动画
+     */
+    private void startProgressAnimation(int newProgress) {
+        ObjectAnimator animator = ObjectAnimator.ofInt(mProgressBar, "progress", currentProgress, newProgress);
+        animator.setDuration(300);
+        animator.setInterpolator(new DecelerateInterpolator());
+        animator.start();
+    }
+
+    /**
+     * progressBar消失动画
+     */
+    private void startDismissAnimation(final int progress) {
+        ObjectAnimator anim = ObjectAnimator.ofFloat(mProgressBar, "alpha", 1.0f, 0.0f);
+        anim.setDuration(1500);  // 动画时长
+        anim.setInterpolator(new DecelerateInterpolator());     // 减速
+        // 关键, 添加动画进度监听器
+        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener(){
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                float fraction = valueAnimator.getAnimatedFraction();      // 0.0f ~ 1.0f
+                int offset = 100 - progress;
+                mProgressBar.setProgress((int) (progress + offset * fraction));
+            }
+        });
+
+        anim.addListener(new AnimatorListenerAdapter() {
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                // 动画结束
+                mProgressBar.setProgress(0);
+                mProgressBar.setVisibility(View.GONE);
+                isAnimStart = false;
+            }
+        });
+        anim.start();
+    }
+
+    @SuppressLint("NewApi")
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mWebView.onResume();
+        // ...
+    }
+
+    @SuppressLint("NewApi")
+    @Override
+    protected void onPause() {
+        mWebView.onPause();
+        // ...
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mWebView.onDestroy();
+        // ...
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        mWebView.onActivityResult(requestCode, resultCode, intent);
+        // ...
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!mWebView.onBackPressed()) {
+            return;
+        }
+        // ...
+        super.onBackPressed();
+    }
+
+    @Override
+    public void onPageStarted(String url, Bitmap favicon) {
+    }
+
+    @Override
+    public void onPageFinished(String url) {
+    }
+
+    @Override
+    public void onPageError(int errorCode, String description, String failingUrl) {
+    }
+
+    @Override
+    public void onDownloadRequested(String url, String suggestedFilename, String mimeType, long contentLength, String contentDisposition, String userAgent) {
+    }
+
+    @Override
+    public void onExternalPageRequest(String url) {
+    }
+
+}
