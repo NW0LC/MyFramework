@@ -3,7 +3,6 @@ package cn.com.szw.lib.myframework.view.pwd;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.EncryptUtils;
@@ -12,7 +11,6 @@ import com.lzy.okgo.OkGo;
 import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.BindView;
 import cn.com.szw.lib.myframework.R;
 import cn.com.szw.lib.myframework.app.MyApplication;
 import cn.com.szw.lib.myframework.base.BaseActivity;
@@ -33,21 +31,9 @@ import static cn.com.szw.lib.myframework.app.MyApplication.salt;
  */
 
 public class PwdSetActivity extends BaseActivity implements OnPasswordInputFinish {
-    @BindView(R.id.mLeft)
-    TextView mLeft;
-    @BindView(R.id.mTitle)
     TextView mTitle;
-    @BindView(R.id.mRight)
-    TextView mRight;
-    @BindView(R.id.mRightImg)
     ImageView mRightImg;
-    @BindView(R.id.mLeftImg)
-    ImageView mLeftImg;
-    @BindView(R.id.parent_lay)
-    RelativeLayout parentLay;
-    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.mPasswordView)
     PasswordView mPasswordView;
 
     @Override
@@ -71,6 +57,10 @@ public class PwdSetActivity extends BaseActivity implements OnPasswordInputFinis
 
     @Override
     public void init() {
+        mRightImg = (ImageView) findViewById(R.id.mRightImg);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mTitle = (TextView) findViewById(R.id.mTitle);
+        mPasswordView = (PasswordView) findViewById(R.id.mPasswordView);
         mPasswordView.getVirtualKeyboardView().getLayoutBack().setVisibility(View.GONE);
         mPasswordView.setOnFinishInput(this);
     }

@@ -2,7 +2,6 @@ package cn.com.szw.lib.myframework.base;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,8 +21,6 @@ import butterknife.ButterKnife;
 import cn.com.szw.lib.myframework.R;
 import cn.com.szw.lib.myframework.utils.RxBus;
 import cn.com.szw.lib.myframework.view.CustomProgress;
-
-import static cn.com.szw.lib.myframework.config.Constants.Permission.Location;
 
 
 /**
@@ -96,13 +93,7 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
 
     @Override
     public void onSucceed(int requestCode, @NonNull List<String> grantedPermissions) {
-        // 权限申请成功回调。
-        Log.i("Tag", "权限申请成功回调。requestCode=" + requestCode);
-        if (requestCode == Location) {
-            Intent startLocationServiceIntent = new Intent(mContext,
-                    LocationService.class);
-            startService(startLocationServiceIntent);
-        }
+
     }
 
     @Override

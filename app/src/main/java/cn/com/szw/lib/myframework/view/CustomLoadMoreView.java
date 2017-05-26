@@ -2,7 +2,7 @@ package cn.com.szw.lib.myframework.view;
 
 import com.chad.library.adapter.base.loadmore.LoadMoreView;
 
-import cn.com.exz.beefrog.R;
+import cn.com.szw.lib.myframework.R;
 
 
 public final class CustomLoadMoreView extends LoadMoreView {

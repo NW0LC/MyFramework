@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <include layout="@layout/action_bar_tv" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <im.delight.android.webview.AdvancedWebView
+            android:id="@+id/mWebView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </im.delight.android.webview.AdvancedWebView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:progress="0"
+            android:progressDrawable="@drawable/web_progress_green" />
+    </RelativeLayout>
+</LinearLayout>

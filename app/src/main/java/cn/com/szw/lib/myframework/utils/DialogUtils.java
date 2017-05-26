@@ -27,9 +27,6 @@ import com.yanzhenjie.permission.AndPermission;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import cn.com.szw.lib.myframework.R;
 import cn.com.szw.lib.myframework.base.BaseActivity;
 import cn.com.szw.lib.myframework.listener.OnNumListener;
@@ -338,27 +335,27 @@ public class DialogUtils {
     }
 
     private static int countIndex=1;
-    static class ViewHolder {
-        @BindView(R.id.minus)
+    private static class ViewHolder implements View.OnClickListener{
         ImageView minus;
-        @BindView(R.id.count)
         EditText count;
-        @BindView(R.id.add)
         ImageView add;
 
         ViewHolder(View view) {
-            ButterKnife.bind(this, view);
+            minus= (ImageView) view.findViewById(R.id.minus);
+            add= (ImageView) view.findViewById(R.id.add);
+            count= (EditText) view.findViewById(R.id.count);
+            add.setOnClickListener(this);
+            minus.setOnClickListener(this);
             count.setSelection(count.getText().length());
         }
-        @OnClick({R.id.minus, R.id.add})
-        public void onViewClicked(View view) {
-            switch (view.getId()) {
-                case R.id.minus:
-                    countIndex = countIndex <= 1 ? 1 : --countIndex;
-                    break;
-                case R.id.add:
-                    countIndex += 1;
-                    break;
+
+        @Override
+        public void onClick(View v) {
+            int i = v.getId();
+            if (i == R.id.minus) {
+                countIndex = countIndex <= 1 ? 1 : --countIndex;
+            } else if (i == R.id.add) {
+                countIndex += 1;
             }
             count.setText(String.format("%s", countIndex));
             count.setSelection(count.getText().length());

@@ -8,7 +8,7 @@ import com.lzy.okgo.request.BaseRequest;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-import cn.com.exz.beefrog.utils.net.NetEntity;
+import cn.com.szw.lib.myframework.utils.net.NetEntity;
 import okhttp3.Response;
 
 /**

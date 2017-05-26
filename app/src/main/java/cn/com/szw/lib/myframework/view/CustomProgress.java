@@ -9,7 +9,7 @@
     import android.widget.ImageView;
     import android.widget.TextView;
 
-    import cn.com.exz.beefrog.R;
+    import cn.com.szw.lib.myframework.R;
 
 
     public class CustomProgress extends Dialog {

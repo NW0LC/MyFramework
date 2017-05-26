@@ -8,7 +8,7 @@ import com.lzy.okgo.request.BaseRequest;
 
 import java.net.UnknownHostException;
 
-import cn.com.exz.beefrog.view.CustomProgress;
+import cn.com.szw.lib.myframework.view.CustomProgress;
 
 
 /**

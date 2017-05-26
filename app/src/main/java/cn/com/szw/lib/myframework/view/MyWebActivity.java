@@ -17,12 +17,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import butterknife.BindView;
-import cn.com.exz.beefrog.R;
-import cn.com.exz.beefrog.base.BaseActivity;
+import cn.com.szw.lib.myframework.R;
+import cn.com.szw.lib.myframework.base.BaseActivity;
 import im.delight.android.webview.AdvancedWebView;
 
 /**
@@ -31,23 +29,10 @@ import im.delight.android.webview.AdvancedWebView;
  */
 
 public class MyWebActivity extends BaseActivity implements AdvancedWebView.Listener {
-    @BindView(R.id.mWebView)
     AdvancedWebView mWebView;
-    @BindView(R.id.mLeft)
-    TextView mLeft;
-    @BindView(R.id.mTitle)
     TextView mTitle;
-    @BindView(R.id.mRight)
-    TextView mRight;
-    @BindView(R.id.mRightImg)
-    ImageView mRightImg;
-    @BindView(R.id.mLeftImg)
     ImageView mLeftImg;
-    @BindView(R.id.parent_lay)
-    RelativeLayout parentLay;
-    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
     public static String Intent_Url="info";
     public static String Intent_Title="name";
@@ -78,6 +63,11 @@ public class MyWebActivity extends BaseActivity implements AdvancedWebView.Liste
 
     @Override
     public void init() {
+        mWebView = (AdvancedWebView) findViewById(R.id.mWebView);
+        mTitle = (TextView) findViewById(R.id.mTitle);
+        mLeftImg = (ImageView) findViewById(R.id.mLeftImg);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mWebView.setListener(this, this);
         mWebView.loadUrl(getIntent().getStringExtra(Intent_Url));
         // 支持js

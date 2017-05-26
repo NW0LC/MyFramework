@@ -13,7 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 
-import cn.com.exz.beefrog.R;
+import cn.com.szw.lib.myframework.R;
 
 
 /**

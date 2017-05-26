@@ -6,8 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 
-import cn.com.exz.beefrog.utils.RxBus;
-import cn.com.exz.beefrog.view.CustomProgress;
+import cn.com.szw.lib.myframework.utils.RxBus;
+import cn.com.szw.lib.myframework.view.CustomProgress;
 import ru.noties.scrollable.CanScrollVerticallyDelegate;
 import ru.noties.scrollable.OnFlingOverListener;
 

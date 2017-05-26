@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +21,6 @@ import com.yanzhenjie.permission.AndPermission;
 import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import cn.com.szw.lib.myframework.R;
 import cn.com.szw.lib.myframework.app.MyApplication;
 import cn.com.szw.lib.myframework.base.BaseActivity;
@@ -46,29 +43,13 @@ import static cn.com.szw.lib.myframework.config.Constants.Permission.Location;
 public class PwdGetCodeActivity extends BaseActivity implements View.OnClickListener {
 
 
-    @BindView(R.id.mLeft)
-    TextView mLeft;
-    @BindView(R.id.mTitle)
     TextView mTitle;
-    @BindView(R.id.mRight)
-    TextView mRight;
-    @BindView(R.id.mRightImg)
-    ImageView mRightImg;
-    @BindView(R.id.mLeftImg)
     ImageView mLeftImg;
-    @BindView(R.id.parent_lay)
-    RelativeLayout parentLay;
-    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.ed_phone)
     ClearWriteEditText phone;
-    @BindView(R.id.get_code)
     TextView getSecurityCode;
-    @BindView(R.id.ed_code)
     ClearWriteEditText code;
-    @BindView(R.id.ll)
     LinearLayout ll;
-    @BindView(R.id.bt_next)
     Button btNext;
     private CountDownTimer countDownTimer;
     private int time = 120000;//倒计时时间
@@ -85,6 +66,17 @@ public class PwdGetCodeActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void init() {
+        ll = (LinearLayout) findViewById(R.id.ll);
+        mLeftImg = (ImageView) findViewById(R.id.mLeftImg);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mTitle = (TextView) findViewById(R.id.mTitle);
+        phone = (cn.com.szw.lib.myframework.view.ClearWriteEditText) findViewById(R.id.ed_phone);
+        getSecurityCode = (TextView) findViewById(R.id.get_code);
+        code = (cn.com.szw.lib.myframework.view.ClearWriteEditText) findViewById(R.id.ed_code);
+        btNext = (Button) findViewById(R.id.bt_next);
+        mLeftImg.setOnClickListener(this);
+        getSecurityCode.setOnClickListener(this);
+        btNext.setOnClickListener(this);
         long l = System.currentTimeMillis();
         if (PreferencesService.getDownTimer(this, downKey) > 0 && l > PreferencesService.getDownTimer(this, downKey)) {
             downTimer(time - (l - PreferencesService.getDownTimer(this, downKey)));
@@ -151,18 +143,14 @@ public class PwdGetCodeActivity extends BaseActivity implements View.OnClickList
     }
 
 
-    @OnClick({R.id.mLeftImg, R.id.get_code, R.id.bt_next})
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.mLeftImg:
-                finish();
-                break;
-            case R.id.get_code:
-                getSecurityCode();
-                break;
-            case R.id.bt_next:
-                check();
-                break;
+        int i = view.getId();
+        if (i == R.id.mLeftImg) {
+            finish();
+        } else if (i == R.id.get_code) {
+            getSecurityCode();
+        } else if (i == R.id.bt_next) {
+            check();
         }
     }
 

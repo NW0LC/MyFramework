@@ -11,7 +11,7 @@ import com.lzy.imagepicker.loader.ImageLoader;
 
 import java.io.File;
 
-import cn.com.exz.beefrog.R;
+import cn.com.szw.lib.myframework.R;
 
 
 public class GlideImageLoader implements ImageLoader {

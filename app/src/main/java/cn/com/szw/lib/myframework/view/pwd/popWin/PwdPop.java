@@ -8,8 +8,6 @@ import android.view.animation.TranslateAnimation;
 
 import com.blankj.utilcode.util.ScreenUtils;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import cn.com.szw.lib.myframework.R;
 import cn.com.szw.lib.myframework.view.pwd.PwdGetCodeActivity;
 import cn.com.szw.lib.myframework.view.pwd.widget.OnPasswordInputFinish;
@@ -18,13 +16,14 @@ import razerdp.basepopup.BasePopupWindow;
 
 public class PwdPop extends BasePopupWindow {
 
-    @BindView(R.id.mPasswordView)
-    PasswordPopView mPasswordView;
+
+    private PasswordPopView mPasswordView;
     private Activity context;
 
     public PwdPop(Activity context, OnPasswordInputFinish onPasswordInputFinish) {
         super(context);
         this.context = context;
+        mPasswordView= (PasswordPopView) findViewById(R.id.mPasswordView);
         mPasswordView.setOnFinishInput(onPasswordInputFinish);
         mPasswordView.getVirtualKeyboardView().getLayoutBack().setVisibility(View.GONE);
         mPasswordView.getViewForgetPwd().setOnClickListener(new View.OnClickListener() {
@@ -54,9 +53,7 @@ public class PwdPop extends BasePopupWindow {
 
     @Override
     public View onCreatePopupView() {
-        View inflate = View.inflate(getContext(), R.layout.pwd_pop, null);
-        ButterKnife.bind(this, inflate);
-        return inflate;
+        return View.inflate(getContext(), R.layout.pwd_pop, null);
     }
 
     @Override
