@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/akexorcist/Android-BluetoothSPP.svg?branch=master)](https://travis-ci.org/akexorcist/Android-BluetoothSPP)
+![Build Status](https://travis-ci.org/akexorcist/Android-BluetoothSPP.svg?branch=master)
 Android-MyFramework
 ===========================
 
 
-![MyFramework Library](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496386594&di=efb4ad74b3078752bf1a815d8bb77ff1&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F15%2F16%2F64%2F86p58PICXSk_1024.jpg)
+![MyFramework Library](http://pic1.win4000.com/pic/b/15/6972620559.jpg)
 
 
 This project contains a lot of convenient and development of the libraries, tools, and controls.Offline popular network framework
