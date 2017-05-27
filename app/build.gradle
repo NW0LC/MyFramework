@@ -54,12 +54,13 @@ dependencies {
     compile rootProject.ext.dependencies.customactivityoncrash
     // dialog
 //    compile project(rootProject.ext.dependencies.CommonAlertPop)
-//    compile rootProject.ext.dependencies.CommonAlertPop
+    compile rootProject.ext.dependencies.CommonAlertPop
     compile rootProject.ext.dependencies.materialdialog
     // tableLayout
     compile rootProject.ext.dependencies.FlycoTabLayout_Lib
     //加载图片
     compile rootProject.ext.dependencies.glide
+    annotationProcessor  rootProject.ext.dependencies.glideCompiler
     compile rootProject.ext.dependencies.ImagePicker
     //上下滑动选择器
     compile rootProject.ext.dependencies.pickerview

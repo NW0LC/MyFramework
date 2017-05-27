@@ -1,6 +1,7 @@
 package cn.com.szw.lib.myframework.app;
 
 
+import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
 import com.blankj.utilcode.util.SPUtils;
@@ -38,7 +39,7 @@ public abstract class MyApplication extends MultiDexApplication implements AbsAp
     /**
      * 本地存储
      */
-    public  SPUtils spUtils;
+    private SPUtils spUtils;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -46,13 +47,16 @@ public abstract class MyApplication extends MultiDexApplication implements AbsAp
         Fresco.initialize(this);
         Utils.init(this);
         Realm.init(this);
-        spUtils= new SPUtils("szw");
+        spUtils= SPUtils.getInstance("szw");
         initOkHttp();
         //Install  程序崩溃日志初始化
         CustomActivityOnCrash.install(this);
 
     }
-
+    public static SPUtils getSPUtils(Context context) {
+        MyApplication application = (MyApplication) context.getApplicationContext();
+        return application.spUtils;
+    }
     private void initOkHttp(){
         try {
         //---------这里给出的是示例代码,告诉你可以这么传,实际使用的时候,根据需要传,不需要就不传-------------//

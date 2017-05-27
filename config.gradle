@@ -62,7 +62,7 @@ ext {
 
             // ------------- dialog -------------
 //            CommonAlertPop               : ':CommonAlertPop',
-//            CommonAlertPop               : 'com.github.PopFisher:SmartAlertPop:c505c4b4b1',
+            CommonAlertPop               : 'com.github.PopFisher:SmartAlertPop:c505c4b4b1',
             materialdialog               : 'me.drakeet.materialdialog:library:latest.release',
 
             // ------------- tableLayout -------------
@@ -82,7 +82,8 @@ ext {
 
             // ------------- 图片加载 -------------
             ImagePicker                  : 'com.github.XZWQuickness:ImagePicker:-SNAPSHOT',
-            glide                        : 'com.github.bumptech.glide:glide:latest.release',
+            glide                        : 'com.github.bumptech.glide:glide:4.0.0-RC0',
+            glideCompiler                : 'com.github.bumptech.glide:compiler:4.0.0-RC0',
             picasso                      : 'com.squareup.picasso:picasso:latest.release',
             photoView                    : 'com.github.chrisbanes:PhotoView:latest.release',
 
