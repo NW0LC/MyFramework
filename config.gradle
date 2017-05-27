@@ -62,7 +62,7 @@ ext {
 
             // ------------- dialog -------------
 //            CommonAlertPop               : ':CommonAlertPop',
-            CommonAlertPop               : 'com.github.PopFisher:SmartAlertPop:c505c4b4b1',
+//            CommonAlertPop               : 'com.github.PopFisher:SmartAlertPop:c505c4b4b1',
             materialdialog               : 'me.drakeet.materialdialog:library:latest.release',
 
             // ------------- tableLayout -------------
