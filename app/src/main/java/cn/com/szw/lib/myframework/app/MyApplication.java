@@ -3,7 +3,6 @@ package cn.com.szw.lib.myframework.app;
 
 import android.support.multidex.MultiDexApplication;
 
-import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.Utils;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.lzy.okgo.OkGo;
@@ -38,7 +37,7 @@ public abstract class MyApplication extends MultiDexApplication implements AbsAp
     /**
      * 本地存储
      */
-    public static SPUtils spUtils;
+//    public static SPUtils spUtils;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -46,7 +45,7 @@ public abstract class MyApplication extends MultiDexApplication implements AbsAp
         Fresco.initialize(this);
         Utils.init(this);
         Realm.init(this);
-        spUtils = new SPUtils("szw");
+//        spUtils = new SPUtils("szw");
         initOkHttp();
         //Install  程序崩溃日志初始化
         CustomActivityOnCrash.install(this);
