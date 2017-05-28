@@ -37,7 +37,7 @@ import static cn.com.szw.lib.myframework.config.Constants.Permission.Phone;
  * on 2017/1/16.
  */
 @RuntimePermissions
-public abstract class BaseActivity extends AppCompatActivity implements AbsBaseActivity{
+public abstract class BaseActivity extends AppCompatActivity implements AbsBaseActivity {
     public Context mContext;
 
     @Override
@@ -102,42 +102,48 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
     }
 
     @Override
-    public void showCameraWithCheck(Intent intent) {
-        BaseActivityPermissionsDispatcher.showCameraWithCheck(this,intent);
-    }
-    @Override
-    public void locationAndSMSWithCheck(Intent intent) {
-        BaseActivityPermissionsDispatcher.locationAndSMSWithCheck(this,intent);
+    public void showCameraWithCheck(Intent intent, boolean isService) {
+        BaseActivityPermissionsDispatcher.showCameraWithCheck(this, intent);
     }
 
     @Override
-    public void callPhoneWithCheck(Intent intent) {
-        BaseActivityPermissionsDispatcher.callPhoneWithCheck(this,intent);
+    public void locationAndSMSWithCheck(Intent intent, boolean isService) {
+        BaseActivityPermissionsDispatcher.locationAndSMSWithCheck(this, intent);
     }
 
-    @NeedsPermission({CAMERA,WRITE_EXTERNAL_STORAGE})
-    void showCamera(Intent intent) {
-        if (intent!=null) {
-            startActivityForResult(intent, Camera);
-        }
+    @Override
+    public void callPhoneWithCheck(Intent intent, boolean isService) {
+        BaseActivityPermissionsDispatcher.callPhoneWithCheck(this, intent);
     }
+
+    @NeedsPermission({CAMERA, WRITE_EXTERNAL_STORAGE})
+    void showCamera(Intent intent, boolean isService) {
+        startAction(intent, isService,Camera);
+    }
+
     @NeedsPermission({ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION, RECEIVE_SMS, READ_SMS})
-    void locationAndSMS(Intent intent) {
-        if (intent!=null) {
-            startActivityForResult(intent, Location);
-        }
+    void locationAndSMS(Intent intent, boolean isService) {
+        startAction(intent, isService,Location);
     }
+
     @NeedsPermission(CALL_PHONE)
-    void callPhone(Intent intent) {
-        if (intent!=null) {
-            startActivityForResult(intent, Phone);
+    void callPhone(Intent intent, boolean isService) {
+        startAction(intent, isService,Phone);
+    }
+
+    void startAction(Intent intent, boolean isService,int requestCode) {
+        if (intent != null) {
+            if (isService)
+                startService(intent);
+            else
+                startActivityForResult(intent, requestCode);
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        BaseActivityPermissionsDispatcher.onRequestPermissionsResult(this,requestCode,grantResults);
+        BaseActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     @Override
