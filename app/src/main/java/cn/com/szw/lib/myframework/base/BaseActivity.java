@@ -2,32 +2,42 @@ package cn.com.szw.lib.myframework.base;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.lzy.imagepicker.view.SystemBarTintManager;
-import com.yanzhenjie.permission.AndPermission;
-import com.yanzhenjie.permission.PermissionListener;
-
-import java.util.List;
 
 import butterknife.ButterKnife;
 import cn.com.szw.lib.myframework.R;
 import cn.com.szw.lib.myframework.utils.RxBus;
 import cn.com.szw.lib.myframework.view.CustomProgress;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
+
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.Manifest.permission.CALL_PHONE;
+import static android.Manifest.permission.CAMERA;
+import static android.Manifest.permission.READ_SMS;
+import static android.Manifest.permission.RECEIVE_SMS;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static cn.com.szw.lib.myframework.config.Constants.Permission.Camera;
+import static cn.com.szw.lib.myframework.config.Constants.Permission.Location;
+import static cn.com.szw.lib.myframework.config.Constants.Permission.Phone;
 
 
 /**
  * Created by Swain
  * on 2017/1/16.
  */
-public abstract class BaseActivity extends AppCompatActivity implements AbsBaseActivity, PermissionListener {
+@RuntimePermissions
+public abstract class BaseActivity extends AppCompatActivity implements AbsBaseActivity{
     public Context mContext;
 
     @Override
@@ -92,34 +102,42 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
     }
 
     @Override
-    public void onSucceed(int requestCode, @NonNull List<String> grantedPermissions) {
-
+    public void showCameraWithCheck(Intent intent) {
+        BaseActivityPermissionsDispatcher.showCameraWithCheck(this,intent);
+    }
+    @Override
+    public void locationAndSMSWithCheck(Intent intent) {
+        BaseActivityPermissionsDispatcher.locationAndSMSWithCheck(this,intent);
     }
 
     @Override
-    public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
-        // 权限申请失败回调。
-        Log.i("Tag", "权限申请失败回调。requestCode=" + requestCode);
-        // 用户否勾选了不再提示并且拒绝了权限，那么提示用户到设置中授权。
-        if (AndPermission.hasAlwaysDeniedPermission(BaseActivity.this, deniedPermissions)) {
-            // 第一种：用默认的提示语。
-//                AndPermission.defaultSettingDialog(this, REQUEST_CODE_SETTING).show();
+    public void callPhoneWithCheck(Intent intent) {
+        BaseActivityPermissionsDispatcher.callPhoneWithCheck(this,intent);
+    }
 
-//                 第二种：用自定义的提示语。
-            AndPermission.defaultSettingDialog(BaseActivity.this, requestCode)
-                    .setTitle("权限申请失败")
-                    .setMessage("我们需要的一些权限被您拒绝或者系统发生错误申请失败，请您到设置页面手动授权，否则功能无法正常使用！")
-                    .setPositiveButton("好，去设置")
-                    .show();
-
-            // 第三种：自定义dialog样式。
-            // SettingService settingService =
-            //    AndPermission.defineSettingDialog(this, REQUEST_CODE_SETTING);
-            // 你的dialog点击了确定调用：
-            // settingService.execute();
-            // 你的dialog点击了取消调用：
-            // settingService.cancel();
+    @NeedsPermission({CAMERA,WRITE_EXTERNAL_STORAGE})
+    void showCamera(Intent intent) {
+        if (intent!=null) {
+            startActivityForResult(intent, Camera);
         }
+    }
+    @NeedsPermission({ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION, RECEIVE_SMS, READ_SMS})
+    void locationAndSMS(Intent intent) {
+        if (intent!=null) {
+            startActivityForResult(intent, Location);
+        }
+    }
+    @NeedsPermission(CALL_PHONE)
+    void callPhone(Intent intent) {
+        if (intent!=null) {
+            startActivityForResult(intent, Phone);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        BaseActivityPermissionsDispatcher.onRequestPermissionsResult(this,requestCode,grantResults);
     }
 
     @Override

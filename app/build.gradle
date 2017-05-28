@@ -31,6 +31,8 @@ dependencies {
 
     //分包错误包
     compile rootProject.ext.dependencies.multidex
+    //lambda
+    compile rootProject.ext.dependencies.retrolambda
     //轮播
     compile rootProject.ext.dependencies.rollviewpager
     //沉浸状态栏
@@ -67,7 +69,9 @@ dependencies {
     // recyclerView adapter封装类
     compile rootProject.ext.dependencies.BaseRecyclerViewAdapterHelper
     //权限申请
-    compile rootProject.ext.dependencies.permission
+//    compile rootProject.ext.dependencies.permission
+    compile rootProject.ext.dependencies.permissionsdispatcher
+    annotationProcessor rootProject.ext.dependencies.permissionsdispatcherProcessor
     //画板
     compile rootProject.ext.dependencies.AndroidDrawingView
     //带header的viewpager

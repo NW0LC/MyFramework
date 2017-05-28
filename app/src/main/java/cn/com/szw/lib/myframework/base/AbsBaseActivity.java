@@ -1,5 +1,6 @@
 package cn.com.szw.lib.myframework.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 /**
@@ -22,4 +23,13 @@ interface AbsBaseActivity {
      * 设置布局id
      */
     int setInflateId();
+    /**
+     * 设置权限
+     * BaseActivityPermissionsDispatcher.showCameraWithCheck(this);
+     * BaseActivityPermissionsDispatcher.locationAndSMSWithCheck(this);
+     * BaseActivityPermissionsDispatcher.callPhoneWithCheck(this);
+     */
+    void showCameraWithCheck(Intent intent);//拍照与读取内存卡，并启动意图，null 不启动
+    void locationAndSMSWithCheck(Intent intent);//定位及读取短信。并启动意图，null 不启动
+    void callPhoneWithCheck(Intent intent);//电话，并启动意图，null 不启动
 }
