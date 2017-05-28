@@ -103,17 +103,17 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
 
     @Override
     public void showCameraWithCheck(Intent intent, boolean isService) {
-        BaseActivityPermissionsDispatcher.showCameraWithCheck(this, intent);
+        BaseActivityPermissionsDispatcher.showCameraWithCheck(this, intent,isService);
     }
 
     @Override
     public void locationAndSMSWithCheck(Intent intent, boolean isService) {
-        BaseActivityPermissionsDispatcher.locationAndSMSWithCheck(this, intent);
+        BaseActivityPermissionsDispatcher.locationAndSMSWithCheck(this, intent,isService);
     }
 
     @Override
     public void callPhoneWithCheck(Intent intent, boolean isService) {
-        BaseActivityPermissionsDispatcher.callPhoneWithCheck(this, intent);
+        BaseActivityPermissionsDispatcher.callPhoneWithCheck(this, intent,isService);
     }
 
     @NeedsPermission({CAMERA, WRITE_EXTERNAL_STORAGE})

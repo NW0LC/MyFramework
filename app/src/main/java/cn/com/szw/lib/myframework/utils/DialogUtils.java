@@ -63,7 +63,7 @@ public class DialogUtils {
                 Intent intent = new Intent(
                         Intent.ACTION_CALL,
                         Uri.parse("tel:" + str1));
-                context.callPhoneWithCheck(intent);
+                context.callPhoneWithCheck(intent,false);
                 dialog.dismiss();
             }
         });
