@@ -86,7 +86,7 @@ ext {
             okgo                          : 'com.lzy.net:okgo:latest.release',
 
             // ------------- 图片加载 -------------
-            ImagePicker                   : 'com.github.XZWQuickness:ImagePicker:-SNAPSHOT',
+            ImagePicker                  : 'com.lzy.widget:imagepicker:latest.release',
             glide                         : 'com.github.bumptech.glide:glide:4.0.0-RC0',
             glideCompiler                 : 'com.github.bumptech.glide:compiler:4.0.0-RC0',
             picasso                       : 'com.squareup.picasso:picasso:latest.release',

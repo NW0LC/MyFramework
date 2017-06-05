@@ -64,6 +64,7 @@ dependencies {
     compile rootProject.ext.dependencies.glide
     annotationProcessor  rootProject.ext.dependencies.glideCompiler
     compile rootProject.ext.dependencies.ImagePicker
+//    compile rootProject.ext.dependencies.photoView
     //上下滑动选择器
     compile rootProject.ext.dependencies.pickerview
     // recyclerView adapter封装类
