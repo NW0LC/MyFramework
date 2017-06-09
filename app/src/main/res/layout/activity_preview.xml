@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="#161616"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/parentLay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/preview_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <include layout="@layout/action_bar_tv" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp"
+        android:background="#7f000000"
+        android:text="保存图片"
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
+</RelativeLayout>

@@ -3,7 +3,9 @@
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <application >
-        <activity android:name=".utils.preview.PreviewOnlyActivity"/>
+        <!--外链-->
         <activity android:name=".view.MyWebActivity"/>
+        <!--图片展示，或选择删除-->
+        <activity android:name=".utils.preview.PreviewActivity"/>
     </application>
 </manifest>
