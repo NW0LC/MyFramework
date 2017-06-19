@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/akexorcist/Android-BluetoothSPP.svg?branch=master)
+[![](https://jitpack.io/v/NW0LC/MyFramework.svg)](https://jitpack.io/#NW0LC/MyFramework)
 Android-MyFramework
 ===========================
 
@@ -74,10 +74,17 @@ Download
 
 Maven
 ```
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
 	<dependency>
 	    <groupId>com.github.NW0LC</groupId>
 	    <artifactId>MyFramework</artifactId>
-	    <version>v1.0.0</version>
+	    <version>1.0.9</version>
 	</dependency>
 
 ```
