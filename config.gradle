@@ -83,7 +83,7 @@ ext {
             // ------------- 网络请求 -------------
             okhttp                        : 'com.squareup.okhttp3:okhttp:latest.release',
             retrofit                      : 'com.squareup.retrofit2:retrofit:latest.release',
-            okgo                          : 'com.lzy.net:okgo:3.0.0',
+            okgo                          : 'com.lzy.net:okgo:+',
 
             // ------------- 图片加载 -------------
             ImagePicker                  : 'com.lzy.widget:imagepicker:latest.release',
