@@ -1,14 +1,16 @@
 package cn.com.szw.lib.myframework.utils.net.callback;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.widget.Toast;
 
-import com.lzy.okgo.request.BaseRequest;
+import com.lzy.okgo.model.Response;
+import com.lzy.okgo.request.Request;
 
-import java.net.UnknownHostException;
+import java.util.Set;
 
 import cn.com.szw.lib.myframework.view.CustomProgress;
+import okhttp3.Call;
+import okhttp3.Headers;
 
 
 /**
@@ -29,20 +31,34 @@ public abstract class DialogCallback<T> extends JsonCallback<T> {
     }
 
     @Override
-    public void onBefore(BaseRequest request) {
-        super.onBefore(request);
+    public void onStart(Request<T, ? extends Request> request) {
+        super.onStart(request);
         CustomProgress.show(context,"加载中",false,null);
     }
 
     @Override
-    public void onAfter(@Nullable T t, @Nullable Exception e) {
-        super.onAfter(t, e);
+    public void onFinish() {
         CustomProgress.disMiss();
-        if (e!=null) {
-            if (e instanceof UnknownHostException) {
-                Toast.makeText(context, "网络未连接，请打开网络后再次尝试。", Toast.LENGTH_SHORT).show();
-            }else
-            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onError(Response<T> response) {
+        super.onError(response);
+        StringBuilder sb;
+        Call call = response.getRawCall();
+        if (call != null) {
+            Toast.makeText(context, "请求失败  请求方式：" + call.request().method() + "\n" + "url：" + call.request().url(), Toast.LENGTH_SHORT).show();
+        }
+        okhttp3.Response rawResponse = response.getRawResponse();
+        if (rawResponse != null) {
+            Headers responseHeadersString = rawResponse.headers();
+            Set<String> names = responseHeadersString.names();
+            sb = new StringBuilder();
+            sb.append("stateCode ： ").append(rawResponse.code()).append("\n");
+            for (String name : names) {
+                sb.append(name).append(" ： ").append(responseHeadersString.get(name)).append("\n");
+            }
+            Toast.makeText(context, sb.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 }

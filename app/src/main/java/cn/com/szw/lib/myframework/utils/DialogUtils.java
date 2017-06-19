@@ -184,7 +184,7 @@ public class DialogUtils {
         ((DialogType104) dialog).setOnBeforeDismiss(new DialogType104.OnBeforeDismissListener() {
             @Override
             public boolean onBeforeDismiss() {
-                KeyboardUtils.hideSoftInput(context, viewHolder.count);
+                KeyboardUtils.hideSoftInput(viewHolder.count);
                 return true;
             }
         });
@@ -222,7 +222,7 @@ public class DialogUtils {
         ((DialogType104) dialog).setOnBeforeDismiss(new DialogType104.OnBeforeDismissListener() {
             @Override
             public boolean onBeforeDismiss() {
-                KeyboardUtils.hideSoftInput(context, editText);
+                KeyboardUtils.hideSoftInput(editText);
                 return true;
             }
         });

@@ -1,13 +1,18 @@
 package cn.com.szw.lib.myframework.utils.net.callback;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.annotation.Nullable;
-import android.view.Window;
+import android.widget.Toast;
 
 import com.lzy.okgo.callback.BitmapCallback;
-import com.lzy.okgo.request.BaseRequest;
+import com.lzy.okgo.model.Response;
+import com.lzy.okgo.request.Request;
+
+import java.util.Set;
+
+import cn.com.szw.lib.myframework.view.CustomProgress;
+import okhttp3.Call;
+import okhttp3.Headers;
 
 /**
  * ================================================
@@ -15,28 +20,43 @@ import com.lzy.okgo.request.BaseRequest;
  * ================================================
  */
 public abstract class BitmapDialogCallback extends BitmapCallback {
+    private Context context;
 
-    private ProgressDialog dialog;
 
-    public BitmapDialogCallback(Activity activity) {
-        dialog = new ProgressDialog(activity);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setMessage("请求网络中...");
+
+    public BitmapDialogCallback(Context context) {
+        super();
+        this.context =context;
+    }
+    @Override
+    public void onStart(Request<Bitmap, ? extends Request> request) {
+        super.onStart(request);
+        CustomProgress.show(context,"加载中",false,null);
     }
 
     @Override
-    public void onBefore(BaseRequest request) {
-        if (dialog != null && !dialog.isShowing()) {
-            dialog.show();
+    public void onFinish() {
+        CustomProgress.disMiss();
+    }
+
+    @Override
+    public void onError(Response<Bitmap> response) {
+        super.onError(response);
+        StringBuilder sb;
+        Call call = response.getRawCall();
+        if (call != null) {
+            Toast.makeText(context, "请求失败  请求方式：" + call.request().method() + "\n" + "url：" + call.request().url(), Toast.LENGTH_SHORT).show();
         }
-    }
-
-    @Override
-    public void onAfter(@Nullable Bitmap bitmap, @Nullable Exception e) {
-        if (dialog != null && dialog.isShowing()) {
-            dialog.dismiss();
+        okhttp3.Response rawResponse = response.getRawResponse();
+        if (rawResponse != null) {
+            Headers responseHeadersString = rawResponse.headers();
+            Set<String> names = responseHeadersString.names();
+            sb = new StringBuilder();
+            sb.append("stateCode ： ").append(rawResponse.code()).append("\n");
+            for (String name : names) {
+                sb.append(name).append(" ： ").append(responseHeadersString.get(name)).append("\n");
+            }
+            Toast.makeText(context, sb.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 }
