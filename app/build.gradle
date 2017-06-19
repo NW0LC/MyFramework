@@ -2,11 +2,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'realm-android'
 //apply plugin: 'io.fabric'
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion "25.0.3"
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 101
         versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -19,7 +19,16 @@ android {
         }
     }
 }
-
+//configurations.all {
+//    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+//        def requested = details.requested
+//        if (requested.group == 'com.android.support') {
+//            if (!requested.name.startsWith("multidex")) {
+//                details.useVersion '26.0.0-alpha1'
+//            }
+//        }
+//    }
+//}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile(rootProject.ext.dependencies.espresso, {
@@ -28,7 +37,6 @@ dependencies {
     compile rootProject.ext.dependencies.appcompatV7
     compile rootProject.ext.dependencies.design
     testCompile rootProject.ext.dependencies.junit
-
     //分包错误包
     compile rootProject.ext.dependencies.multidex
     //lambda

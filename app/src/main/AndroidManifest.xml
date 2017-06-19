@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="cn.com.szw.lib.myframework">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />

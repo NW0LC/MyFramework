@@ -1,5 +1,6 @@
 package cn.com.szw.lib.myframework.utils.net.callback;
 
+import com.alibaba.fastjson.JSON;
 import com.google.gson.stream.JsonReader;
 import com.lzy.okgo.convert.Converter;
 
@@ -104,7 +105,8 @@ public class JsonConvert<T> implements Converter<T> {
         if (type == null) return null;
         ResponseBody body = response.body();
         if (body == null) return null;
-        JsonReader jsonReader = new JsonReader(body.charStream());
+//        JsonReader jsonReader = new JsonReader(body.charStream());
+        String jsonReader =body.string();
 
         Type rawType = type.getRawType();                     // 泛型的实际类型
         Type typeArgument = type.getActualTypeArguments()[0]; // 泛型的参数
@@ -116,13 +118,13 @@ public class JsonConvert<T> implements Converter<T> {
         } else {
             if (typeArgument == Void.class) {
                 // 泛型格式如下： new JsonCallback<LzyResponse<Void>>(this)
-                SimpleResponse simpleResponse = Convert.fromJson(jsonReader, SimpleResponse.class);
+                SimpleResponse simpleResponse = JSON.parseObject(jsonReader, SimpleResponse.class);
                 response.close();
                 //noinspection unchecked
                 return (T) simpleResponse.toNetEntity();
             } else {
                 // 泛型格式如下： new JsonCallback<LzyResponse<内层JavaBean>>(this)
-                NetEntity netEntity = Convert.fromJson(jsonReader, type);
+                NetEntity netEntity =JSON.parseObject(jsonReader, type);
                 response.close();
                 int code = netEntity.getCode();
                 //这里的0是以下意思
