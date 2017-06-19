@@ -1,8 +1,7 @@
 package cn.com.szw.lib.myframework.view.pwd.widget;
 
 import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,13 +17,14 @@ import java.util.Map;
 import cn.com.szw.lib.myframework.R;
 import cn.com.szw.lib.myframework.view.pwd.adapter.KeyBoardAdapter;
 
+
 /**
  * activity里面的View
  */
 public class PasswordView extends RelativeLayout {
 
     Context mContext;
-
+    private OnPasswordInputFinish inputFinish;
     private VirtualKeyboardView virtualKeyboardView;
 
     private TextView[] tvList;      //用数组保存6个TextView，为什么用数组？
@@ -119,20 +119,28 @@ public class PasswordView extends RelativeLayout {
                     if (currentIndex >= -1 && currentIndex < 5) {      //判断输入位置————要小心数组越界
 
                         ++currentIndex;
-                        tvList[currentIndex].setText(valueList.get(position).get("name"));
-
                         tvList[currentIndex].setVisibility(View.INVISIBLE);
                         imgList[currentIndex].setVisibility(View.VISIBLE);
+                        tvList[currentIndex].setText(valueList.get(position).get("name"));
+
+                        if (currentIndex==5) {
+                            String strPassword = "";     //每次触发都要先将strPassword置空，再重新获取，避免由于输入删除再输入造成混乱
+                            for (int i = 0; i < 6; i++) {
+                                strPassword += tvList[i].getText().toString().trim();
+                            }
+                            System.out.println("strPassword :" + strPassword);
+                            if (!TextUtils.isEmpty(strPassword))
+                                if (inputFinish != null)
+                                    inputFinish.inputFinish(strPassword);    //接口中要实现的方法，完成密码输入完成后的响应逻辑
+                        }
                     }
                 } else {
                     if (position == 11) {      //点击退格键
                         if (currentIndex - 1 >= -1) {      //判断是否删除完毕————要小心数组越界
 
-                            tvList[currentIndex].setText("");
-
                             tvList[currentIndex].setVisibility(View.VISIBLE);
                             imgList[currentIndex].setVisibility(View.INVISIBLE);
-
+                            tvList[currentIndex].setText("");
                             currentIndex--;
                         }
                     }
@@ -141,36 +149,20 @@ public class PasswordView extends RelativeLayout {
         });
     }
 
+    public void reset(){
+        currentIndex = -1;
+        for (TextView textView : tvList) {
+            textView.setText("");
+            textView.setVisibility(VISIBLE);
+        }
+        for (ImageView imageView : imgList) {
+            imageView.setVisibility(INVISIBLE);
+        }
+
+    }
     //设置监听方法，在第6位输入完成后触发
-    public void setOnFinishInput(final OnPasswordInputFinish pass) {
-
-
-        tvList[5].addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-                if (s.toString().length() == 1) {
-
-                    String strPassword = "";     //每次触发都要先将strPassword置空，再重新获取，避免由于输入删除再输入造成混乱
-
-                    for (int i = 0; i < 6; i++) {
-                        strPassword += tvList[i].getText().toString().trim();
-                    }
-                    System.out.println("strPassword :" + strPassword);
-                    pass.inputFinish(strPassword);    //接口中要实现的方法，完成密码输入完成后的响应逻辑
-                }
-            }
-        });
+    public void setInputFinish(OnPasswordInputFinish inputFinish) {
+        this.inputFinish = inputFinish;
     }
 
     public VirtualKeyboardView getVirtualKeyboardView() {
