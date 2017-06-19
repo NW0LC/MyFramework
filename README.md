@@ -95,7 +95,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.NW0LC:MyFramework:1.0.6'
+	        compile 'com.github.NW0LC:MyFramework:1.0.8'
 	}
 ```
 
