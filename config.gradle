@@ -1,13 +1,4 @@
 ext {
-    android = [
-            compileSdkVersion: 25,
-            buildToolsVersion: "25.0.3",
-            minSdkVersion    : 19,
-            targetSdkVersion : 25,
-            versionCode      : 1,
-            versionName      : "1.0"
-    ]
-
     dependVersion = [
             support: "25.3.1"
     ]
@@ -16,7 +7,7 @@ ext {
 //            supportV4            : "com.android.support:support-v4:${dependVersion.support}",
             appcompatV7                   : "com.android.support:appcompat-v7:${dependVersion.support}",
             design                        : "com.android.support:design:${dependVersion.support}",
-            junit                         : "junit:junit:4.12",
+            junit                         : "junit:junit:4.12", 
 
             //------------- 测试 -------------
             espresso                      : "com.android.support.test.espresso:espresso-core:2.2.2",
