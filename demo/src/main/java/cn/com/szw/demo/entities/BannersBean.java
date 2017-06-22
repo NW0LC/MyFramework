@@ -1,4 +1,4 @@
-package cn.com.szw.demo;
+package cn.com.szw.demo.entities;
 
 import io.realm.RealmObject;
 

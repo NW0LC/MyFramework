@@ -1,4 +1,4 @@
-package cn.com.szw.demo;
+package cn.com.szw.demo.app;
 
 import cn.com.szw.lib.myframework.app.MyApplication;
 

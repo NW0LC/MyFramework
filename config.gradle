@@ -16,7 +16,7 @@ ext {
             retrolambda                   : 'me.tatarka:gradle-retrolambda:latest.release',
 
             // ------------- 侧滑删除 -------------
-            SwipeDelMenuLayout            : 'com.github.mcxtzhang:SwipeDelMenuLayout:latest.release',
+            SwipeDelMenuLayout            : 'com.github.mcxtzhang:SwipeDelMenuLayout:V+',
 
             // ------------- 分包错误包 -------------
             multidex                      : 'com.android.support:multidex:latest.release',
