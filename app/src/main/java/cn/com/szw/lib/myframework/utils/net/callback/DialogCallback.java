@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.lzy.okgo.model.Response;
-import com.lzy.okgo.request.Request;
+import com.lzy.okgo.request.base.Request;
 
 import java.util.Set;
 
