@@ -84,7 +84,7 @@ Maven
       	<dependency>
 	    <groupId>com.github.NW0LC</groupId>
 	    <artifactId>MyFramework</artifactId>
-	    <version>1.0.10</version>
+	    <version>1.0.11</version>
 	</dependency>
 
 ```
@@ -102,7 +102,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.NW0LC:MyFramework:1.0.10'
+	        compile 'com.github.NW0LC:MyFramework:1.0.11'
 	}
 ```
 
