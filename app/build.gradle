@@ -19,16 +19,16 @@ android {
         }
     }
 }
-//configurations.all {
-//    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-//        def requested = details.requested
-//        if (requested.group == 'com.android.support') {
-//            if (!requested.name.startsWith("multidex")) {
-//                details.useVersion '26.0.0-alpha1'
-//            }
-//        }
-//    }
-//}
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '26.0.0-alpha1'
+            }
+        }
+    }
+}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile(rootProject.ext.dependencies.espresso, {
@@ -103,4 +103,6 @@ dependencies {
     compile rootProject.ext.dependencies.circleNum
 //    蓝牙
     compile rootProject.ext.dependencies.bluetooth
+//    HTML Parser html解析
+    compile rootProject.ext.dependencies.jsoup
 }

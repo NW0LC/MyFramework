@@ -1,6 +1,6 @@
 ext {
     dependVersion = [
-            support: "25.3.1"
+            support: "26.0.0-alpha1"
     ]
     dependencies = [
             // ------------- Android -------------
@@ -117,5 +117,8 @@ ext {
 
             //====================蓝牙========================
             bluetooth                     : 'com.inuker.bluetooth:library:latest.release',
+
+            //====================//HTML Parser html解析========================
+            jsoup                     : 'org.jsoup:jsoup:+',
     ]
 }
