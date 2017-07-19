@@ -21,6 +21,11 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.widget.TextView;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -323,5 +328,22 @@ public class SZWUtils {
 // 关键字“寒江雪”变色，text1.length() + 6-text1.length() + 6 + text2.length()
         style.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.colorAccent)), text1.length() + 6, text1.length() + 6 + text2.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return style;
+    }
+
+    /**
+     * @param html 富文本
+     * @return  矫正图片后的富文本
+     */
+    public static String getHtmlContent(String html){
+//
+        Document doc_Dis = Jsoup.parse(html);
+        Elements ele_Img = doc_Dis.getElementsByTag("img");
+        if (ele_Img.size() != 0){
+            for (Element e_Img : ele_Img) {
+                e_Img.attr("style", "max-width:100%;height:auto;");
+            }
+        }
+//
+        return doc_Dis.toString();
     }
 }
