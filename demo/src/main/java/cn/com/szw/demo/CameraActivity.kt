@@ -11,30 +11,28 @@ import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
-
 import com.cjt2325.cameralibrary.JCameraView
 import com.cjt2325.cameralibrary.lisenter.ErrorLisenter
 import com.cjt2325.cameralibrary.lisenter.JCameraLisenter
 import com.cjt2325.cameralibrary.util.DeviceUtil
 import com.cjt2325.cameralibrary.util.FileUtil
-
+import kotlinx.android.synthetic.main.activity_camera.*
 import java.io.File
-
 class CameraActivity : AppCompatActivity() {
-    private var jCameraView: JCameraView? = null
+//    private var jCameraView: JCameraView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_camera)
-        jCameraView = findViewById(R.id.jcameraview) as JCameraView
+//        jCameraView = findViewById(R.id.jcameraview) as JCameraView
         //设置视频保存路径
-        jCameraView!!.setSaveVideoPath(Environment.getExternalStorageDirectory().path + File.separator + "JCamera")
-        jCameraView!!.setFeatures(JCameraView.BUTTON_STATE_ONLY_RECORDER)
-        jCameraView!!.setTip("JCameraView Tip")
-        jCameraView!!.setMediaQuality(JCameraView.MEDIA_QUALITY_MIDDLE)
-        jCameraView!!.setErrorLisenter(object : ErrorLisenter {
+        jcameraview!!.setSaveVideoPath(Environment.getExternalStorageDirectory().path + File.separator + "JCamera")
+        jcameraview!!.setFeatures(JCameraView.BUTTON_STATE_ONLY_RECORDER)
+        jcameraview!!.setTip("JCameraView Tip")
+        jcameraview!!.setMediaQuality(JCameraView.MEDIA_QUALITY_MIDDLE)
+        jcameraview!!.setErrorLisenter(object : ErrorLisenter {
             override fun onError() {
                 //错误监听
                 Log.i("CJT", "camera error")
@@ -48,7 +46,7 @@ class CameraActivity : AppCompatActivity() {
             }
         })
         //JCameraView监听
-        jCameraView!!.setJCameraLisenter(object : JCameraLisenter {
+        jcameraview!!.setJCameraLisenter(object : JCameraLisenter {
             override fun captureSuccess(bitmap: Bitmap) {
                 //获取图片bitmap
                 //                Log.i("JCameraView", "bitmap = " + bitmap.getWidth());
@@ -94,12 +92,12 @@ class CameraActivity : AppCompatActivity() {
     override fun onResume() {
         Log.i("CJT", "onResume")
         super.onResume()
-        jCameraView!!.onResume()
+        jcameraview!!.onResume()
     }
 
     override fun onPause() {
         Log.i("CJT", "onPause")
         super.onPause()
-        jCameraView!!.onPause()
+        jcameraview!!.onPause()
     }
 }
