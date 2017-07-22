@@ -21,7 +21,16 @@ android {
         }
     }
 }
-
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '26.0.0-alpha1'
+            }
+        }
+    }
+}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -30,4 +39,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
 //    compile 'com.github.NW0LC:MyFramework:1.0.10'
     compile project (':app')
+    compile 'cjt.library.wheel:camera:+'
+//    compile 'com.mabeijianxi:small-video-record:1.2.0'
 }

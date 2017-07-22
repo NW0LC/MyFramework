@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: 'realm-android'
+apply plugin: 'kotlin-android-extensions'
 //apply plugin: 'io.fabric'
 android {
     compileSdkVersion 26
@@ -31,78 +33,90 @@ configurations.all {
 }
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile(rootProject.ext.dependencies.espresso, {
+    androidTestCompile(rootProject.ext.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile rootProject.ext.dependencies.appcompatV7
-    compile rootProject.ext.dependencies.design
-    testCompile rootProject.ext.dependencies.junit
+    compile rootProject.ext.appcompatV7
+    compile rootProject.ext.design
+    testCompile rootProject.ext.junit
     //分包错误包
-    compile rootProject.ext.dependencies.multidex
+    compile rootProject.ext.multidex
     //lambda
-    compile rootProject.ext.dependencies.retrolambda
+    compile rootProject.ext.retrolambda
     //轮播
-    compile rootProject.ext.dependencies.rollviewpager
+    compile rootProject.ext.rollviewpager
     //沉浸状态栏
-    compile rootProject.ext.dependencies.systembartint
+    compile rootProject.ext.systembartint
     //小工具
-    compile rootProject.ext.dependencies.utilcode
+    compile rootProject.ext.utilcode
     //圆头像SimpleDraweeView
-    compile rootProject.ext.dependencies.SimpleDraweeView
+    compile rootProject.ext.SimpleDraweeView
     //回调
-    compile rootProject.ext.dependencies.rxbus
+    compile rootProject.ext.rxbus
     //注解
-    compile rootProject.ext.dependencies.butterknife
+    compile rootProject.ext.butterknife
     //注解附件
-    compile rootProject.ext.dependencies.butterknifeCompiler
+    compile rootProject.ext.butterknifeCompiler
     //okHttp
-    compile rootProject.ext.dependencies.okgo
+    compile rootProject.ext.okgo
     //解析json
-    compile rootProject.ext.dependencies.gson
-    compile rootProject.ext.dependencies.fastJson
+    compile rootProject.ext.gson
+    compile rootProject.ext.fastJson
     //崩溃dialog
-    compile rootProject.ext.dependencies.customactivityoncrash
+    compile rootProject.ext.customactivityoncrash
     // dialog
-//    compile project(rootProject.ext.dependencies.CommonAlertPop)
-    compile rootProject.ext.dependencies.CommonAlertPop
-    compile rootProject.ext.dependencies.materialdialog
+//    compile project(rootProject.ext.CommonAlertPop)
+    compile rootProject.ext.CommonAlertPop
+    compile rootProject.ext.materialdialog
     // tableLayout
-    compile rootProject.ext.dependencies.FlycoTabLayout_Lib
+    compile rootProject.ext.FlycoTabLayout_Lib
     //加载图片
-    compile rootProject.ext.dependencies.glide
-    annotationProcessor  rootProject.ext.dependencies.glideCompiler
-    compile rootProject.ext.dependencies.ImagePicker
-//    compile rootProject.ext.dependencies.photoView
+    compile rootProject.ext.glide
+    annotationProcessor  rootProject.ext.glideCompiler
+    compile rootProject.ext.ImagePicker
+//    compile rootProject.ext.photoView
     //上下滑动选择器
-    compile rootProject.ext.dependencies.pickerview
+    compile rootProject.ext.pickerview
     // recyclerView adapter封装类
-    compile rootProject.ext.dependencies.BaseRecyclerViewAdapterHelper
+    compile rootProject.ext.BaseRecyclerViewAdapterHelper
     //权限申请
-//    compile rootProject.ext.dependencies.permission
-    compile rootProject.ext.dependencies.permissionsdispatcher
-    annotationProcessor rootProject.ext.dependencies.permissionsdispatcherProcessor
+//    compile rootProject.ext.permission
+    compile rootProject.ext.permissionsdispatcher
+    annotationProcessor rootProject.ext.permissionsdispatcherProcessor
     //画板
-    compile rootProject.ext.dependencies.AndroidDrawingView
+    compile rootProject.ext.AndroidDrawingView
     //带header的viewpager
-    compile rootProject.ext.dependencies.scrollable
+    compile rootProject.ext.scrollable
     //通用popWindow
-    compile rootProject.ext.dependencies.BasePopup
+    compile rootProject.ext.BasePopup
     //星星之间的间距
-    compile rootProject.ext.dependencies.xlhratingbar_lib
+    compile rootProject.ext.xlhratingbar_lib
     //类似相对布局
-    compile rootProject.ext.dependencies.constraintlayout
+    compile rootProject.ext.constraintlayout
     //webView
-    compile rootProject.ext.dependencies.AdvancedWebView
+    compile rootProject.ext.AdvancedWebView
 //    侧滑删除
-    compile rootProject.ext.dependencies.SwipeDelMenuLayout
+    compile rootProject.ext.SwipeDelMenuLayout
 //    俗名：垂直跑马灯学名：垂直翻页公告
-    compile rootProject.ext.dependencies.marqueeview
+    compile rootProject.ext.marqueeview
 //    产品标签
-    compile rootProject.ext.dependencies.flowlayout
+    compile rootProject.ext.flowlayout
 //    圆圈加数字指示
-    compile rootProject.ext.dependencies.circleNum
+    compile rootProject.ext.circleNum
 //    蓝牙
-    compile rootProject.ext.dependencies.bluetooth
+    compile rootProject.ext.bluetooth
 //    HTML Parser html解析
-    compile rootProject.ext.dependencies.jsoup
+    compile rootProject.ext.jsoup
+//    用于解析Adobe After Effects动画
+    compile rootProject.ext.lottie
+//kotlin语言类库
+    compile rootProject.ext.kotlin
+//Anko kotlin 插件 代码布局库
+    compile rootProject.ext.kotlin
+    compile rootProject.ext.anko
+    compile rootProject.ext.ankoSupprt
+    compile rootProject.ext.ankoAppcompat
+}
+repositories {
+    mavenCentral()
 }

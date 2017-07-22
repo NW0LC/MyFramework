@@ -4,12 +4,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="cn.com.szw.demo.MainActivity">
-
-   <android.support.v7.widget.RecyclerView
-       android:id="@+id/recycler"
+   <ScrollView
        android:layout_width="match_parent"
        android:layout_height="match_parent">
+      <LinearLayout
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+         <com.airbnb.lottie.LottieAnimationView
+             android:id="@+id/animation_view"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             app:lottie_fileName="hello-world.json"
+             app:lottie_loop="true"
+             app:lottie_autoPlay="true" />
+         <android.support.v7.widget.RecyclerView
+             android:id="@+id/recycler"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
-   </android.support.v7.widget.RecyclerView>
+         </android.support.v7.widget.RecyclerView>
+      </LinearLayout>
+   </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

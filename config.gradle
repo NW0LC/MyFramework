@@ -1,124 +1,135 @@
 ext {
-    dependVersion = [
-            support: "26.0.0-alpha1"
-    ]
-    dependencies = [
-            // ------------- Android -------------
-//            supportV4            : "com.android.support:support-v4:${dependVersion.support}",
-            appcompatV7                   : "com.android.support:appcompat-v7:${dependVersion.support}",
-            design                        : "com.android.support:design:${dependVersion.support}",
-            junit                         : "junit:junit:4.12", 
 
-            //------------- 测试 -------------
-            espresso                      : "com.android.support.test.espresso:espresso-core:2.2.2",
+    support = "26.0.0-alpha1"
+    kotlin_version = '1.1.3-2'
 
-            // ------------- lambda -------------
-            retrolambda                   : 'me.tatarka:gradle-retrolambda:latest.release',
+    // ------------- Android -------------
+//            supportV4            ='com.android.support:support-v4:${dependVersion.support}"
+    appcompatV7 = "com.android.support:appcompat-v7:${ext.support}"
+    design = "com.android.support:design:${ext.support}"
+    junit = 'junit:junit:4.12'
 
-            // ------------- 侧滑删除 -------------
-            SwipeDelMenuLayout            : 'com.github.mcxtzhang:SwipeDelMenuLayout:V+',
+    //------------- 测试 -------------
+    espresso = 'com.android.support.test.espresso:espresso-core:2.2.2'
 
-            // ------------- 分包错误包 -------------
-            multidex                      : 'com.android.support:multidex:latest.release',
+    // ------------- lambda -------------
+    retrolambda = 'me.tatarka:gradle-retrolambda:latest.release'
 
-            // ------------- 类似相对布局 -------------
-            constraintlayout              : 'com.android.support.constraint:constraint-layout:latest.release',
+    // ------------- 侧滑删除 -------------
+    SwipeDelMenuLayout = 'com.github.mcxtzhang:SwipeDelMenuLayout:V+'
 
-            // ------------- webView -------------
-            AdvancedWebView               : 'com.github.delight-im:Android-AdvancedWebView:latest.release',
+    // ------------- 分包错误包 -------------
+    multidex = 'com.android.support:multidex:latest.release'
 
-            // ------------- 通用popWindow -------------
-            BasePopup                     : 'com.github.razerdp:BasePopup:latest.release',
+    // ------------- 类似相对布局 -------------
+    constraintlayout = 'com.android.support.constraint:constraint-layout:latest.release'
 
-            // ------------- 带header的viewpager -------------
-            scrollable                    : 'ru.noties:scrollable:latest.release',
+    // ------------- webView -------------
+    AdvancedWebView = 'com.github.delight-im:Android-AdvancedWebView:latest.release'
 
-            // ------------- 画板 -------------
-            AndroidDrawingView            : 'com.github.vilyever:AndroidDrawingView:latest.release',
+    // ------------- 通用popWindow -------------
+    BasePopup = 'com.github.razerdp:BasePopup:latest.release'
 
-            // ------------- 权限申请 -------------
-//            permission                   : 'com.yanzhenjie:permission:latest.release',
-            permissionsdispatcher         : 'com.github.hotchemi:permissionsdispatcher:latest.release',
-            permissionsdispatcherProcessor: 'com.github.hotchemi:permissionsdispatcher-processor:latest.release',
+    // ------------- 带header的viewpager -------------
+    scrollable = 'ru.noties:scrollable:latest.release'
 
-            // ------------- 轮播 -------------
-            rollviewpager                 : 'com.jude:rollviewpager:latest.release',
+    // ------------- 画板 -------------
+    AndroidDrawingView = 'com.github.vilyever:AndroidDrawingView:latest.release'
 
-            // ------------- 沉浸状态栏 -------------
-            systembartint                 : 'com.readystatesoftware.systembartint:systembartint:latest.release',
+    // ------------- 权限申请 -------------
+//            permission                   ='com.yanzhenjie:permission:latest.release'
+    permissionsdispatcher = 'com.github.hotchemi:permissionsdispatcher:latest.release'
+    permissionsdispatcherProcessor = 'com.github.hotchemi:permissionsdispatcher-processor:latest.release'
 
-            // ------------- 小工具 -------------
-            utilcode                      : 'com.blankj:utilcode:latest.release',
+    // ------------- 轮播 -------------
+    rollviewpager = 'com.jude:rollviewpager:latest.release'
 
-            // ------------- 圆头像SimpleDraweeView -------------
-            SimpleDraweeView              : 'com.facebook.fresco:fresco:latest.release',
+    // ------------- 沉浸状态栏 -------------
+    systembartint = 'com.readystatesoftware.systembartint:systembartint:latest.release'
 
-            // ------------- 崩溃dialog -------------
-            customactivityoncrash         : 'cat.ereza:customactivityoncrash:latest.release',
+    // ------------- 小工具 -------------
+    utilcode = 'com.blankj:utilcode:latest.release'
 
-            // ------------- dialog -------------
-//            CommonAlertPop               : ':CommonAlertPop',
-            CommonAlertPop                : 'com.github.PopFisher:SmartAlertPop:c505c4b4b1',
-            materialdialog                : 'me.drakeet.materialdialog:library:latest.release',
+    // ------------- 圆头像SimpleDraweeView -------------
+    SimpleDraweeView = 'com.facebook.fresco:fresco:latest.release'
 
-            // ------------- tableLayout -------------
-            FlycoTabLayout_Lib            : 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar',
+    // ------------- 崩溃dialog -------------
+    customactivityoncrash = 'cat.ereza:customactivityoncrash:latest.release'
 
-            // ------------- recyclerView adapter封装类 -------------
-            BaseRecyclerViewAdapterHelper : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.release',
+    // ------------- dialog -------------
+//            CommonAlertPop               =':CommonAlertPop'
+    CommonAlertPop = 'com.github.PopFisher:SmartAlertPop:c505c4b4b1'
+    materialdialog = 'me.drakeet.materialdialog:library:latest.release'
 
-            // ------------- 上下滑动选择器 -------------
-//            AndroidPicker        :'cn.qqtheme.framework:AndroidPicker:latest.integration',
-            pickerview                    : 'com.bigkoo:pickerview:latest.release',
+    // ------------- tableLayout -------------
+    FlycoTabLayout_Lib = 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 
-            // ------------- 网络请求 -------------
-            okhttp                        : 'com.squareup.okhttp3:okhttp:latest.release',
-            retrofit                      : 'com.squareup.retrofit2:retrofit:latest.release',
-            okgo                          : 'com.lzy.net:okgo:+',
+    // ------------- recyclerView adapter封装类 -------------
+    BaseRecyclerViewAdapterHelper = 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.release'
 
-            // ------------- 图片加载 -------------
-            ImagePicker                  : 'com.lzy.widget:imagepicker:latest.release',
-            glide                         : 'com.github.bumptech.glide:glide:4.0.0-RC0',
-            glideCompiler                 : 'com.github.bumptech.glide:compiler:4.0.0-RC0',
-            picasso                       : 'com.squareup.picasso:picasso:latest.release',
-            photoView                     : 'com.github.chrisbanes:PhotoView:latest.release',
+    // ------------- 上下滑动选择器 -------------
+//            AndroidPicker        :'cn.qqtheme.framework:AndroidPicker:latest.integration'
+    pickerview = 'com.bigkoo:pickerview:latest.release'
 
-            // ------------- 回调 -------------//
-            rxbus                         : 'com.hwangjr.rxbus:rxbus:latest.release',
+    // ------------- 网络请求 -------------
+    okhttp = 'com.squareup.okhttp3:okhttp:latest.release'
+    retrofit = 'com.squareup.retrofit2:retrofit:latest.release'
+    okgo = 'com.lzy.net:okgo:+'
 
-            // ------------- RxAndroid -------------
-            rxAndroid                     : 'io.reactivex:rxandroid:latest.release',
-            rxJava                        : 'io.reactivex:rxjava:latest.release',
+    // ------------- 图片加载 -------------
+    ImagePicker = 'com.lzy.widget:imagepicker:latest.release'
+    glide = 'com.github.bumptech.glide:glide:4.0.0-RC0'
+    glideCompiler = 'com.github.bumptech.glide:compiler:4.0.0-RC0'
+    picasso = 'com.squareup.picasso:picasso:latest.release'
+    photoView = 'com.github.chrisbanes:PhotoView:latest.release'
 
-            // ------------- json解析 -------------
-            fastJson                      : 'com.alibaba:fastjson:latest.release',
-            gson                          : 'com.google.code.gson:gson:2.8.0',
+    // ------------- 回调 -------------//
+    rxbus = 'com.hwangjr.rxbus:rxbus:latest.release'
 
-            // ------------- log打印工具 -------------
-            logger                        : 'com.orhanobut:logger:latest.release',
+    // ------------- RxAndroid -------------
+    rxAndroid = 'io.reactivex:rxandroid:latest.release'
+    rxJava = 'io.reactivex:rxjava:latest.release'
 
-            greendao                      : 'org.greenrobot:greendao:3.2.0',
+    // ------------- json解析 -------------
+    fastJson = 'com.alibaba:fastjson:latest.release'
+    gson = 'com.google.code.gson:gson:2.8.0'
 
-            // ------------- ButterKnife -------------
-            butterknife                   : 'com.jakewharton:butterknife:latest.release',
-            butterknifeCompiler           : 'com.jakewharton:butterknife-compiler:latest.release',
+    // ------------- log打印工具 -------------
+    logger = 'com.orhanobut:logger:latest.release'
 
-            // ------------- 星星之间的间距 -------------
-            xlhratingbar_lib              : 'com.xingliuhua:xlhratingbar_lib:latest.release',
+    greendao = 'org.greenrobot:greendao:3.2.0'
 
-            // ------------- 俗名：垂直跑马灯学名：垂直翻页公告 -------------
-            marqueeview                   : 'com.sunfusheng:marqueeview:latest.release',
+    // ------------- ButterKnife -------------
+    butterknife = 'com.jakewharton:butterknife:latest.release'
+    butterknifeCompiler = 'com.jakewharton:butterknife-compiler:latest.release'
 
-            // ------------- 产品标签 -------------
-            flowlayout                    : 'com.zhy:flowlayout-lib:latest.release',
+    // ------------- 星星之间的间距 -------------
+    xlhratingbar_lib = 'com.xingliuhua:xlhratingbar_lib:latest.release'
 
-            //====================圆圈加数字指示========================
-            circleNum                     : 'q.rorbin:badgeview:latest.release',
+    // ------------- 俗名：垂直跑马灯学名：垂直翻页公告 -------------
+    marqueeview = 'com.sunfusheng:marqueeview:latest.release'
 
-            //====================蓝牙========================
-            bluetooth                     : 'com.inuker.bluetooth:library:latest.release',
+    // ------------- 产品标签 -------------
+    flowlayout = 'com.zhy:flowlayout-lib:latest.release'
 
-            //====================//HTML Parser html解析========================
-            jsoup                     : 'org.jsoup:jsoup:+',
-    ]
+    //====================圆圈加数字指示========================
+    circleNum = 'q.rorbin:badgeview:latest.release'
+
+    //====================蓝牙========================
+    bluetooth = 'com.inuker.bluetooth:library:latest.release'
+
+    //====================//HTML Parser html解析========================
+    jsoup = 'org.jsoup:jsoup:+'
+
+    //====================//用于解析Adobe After Effects动画========================
+    lottie = 'com.airbnb.android:lottie:2.1.0'
+
+    //====================//kotlin语言类库========================
+    kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$ext.kotlin_version"
+
+    //====================// Anko kotlin 插件 代码布局库========================
+    anko = 'org.jetbrains.anko:anko-sdk15:+' // sdk19 sdk21 sdk23 are also available
+    ankoSupprt = 'org.jetbrains.anko:anko-support-v4:+' // In case you need support-v4 bindings
+    ankoAppcompat = 'org.jetbrains.anko:anko-appcompat-v7:+' // For appcompat-v7 bindings
+
 }
