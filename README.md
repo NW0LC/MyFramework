@@ -68,6 +68,14 @@ Feature
 
 •蓝牙 操作库
 
+•HTML Parser html解析
+
+•lottie用于解析Adobe After Effects动画
+
+•kotlin语言类库
+
+•Anko kotlin 插件 代码布局库
+
 
 Download
 --------------
