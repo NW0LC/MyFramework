@@ -131,5 +131,6 @@ ext {
     anko = 'org.jetbrains.anko:anko-sdk15:+' // sdk19 sdk21 sdk23 are also available
     ankoSupprt = 'org.jetbrains.anko:anko-support-v4:+' // In case you need support-v4 bindings
     ankoAppcompat = 'org.jetbrains.anko:anko-appcompat-v7:+' // For appcompat-v7 bindings
+    ankoRecyclerview = 'org.jetbrains.anko:anko-recyclerview-v7:+' // For ankoRecyclerview bindings
 
 }
