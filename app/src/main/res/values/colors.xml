@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="app_bg">#ffffff</color>
     <color name="app_gray_lin">#CCCCCC</color>
+    <color name="app_action_title">#181819</color>
     <color name="popup_bg">#8f000000</color>
     <color name="line_bg">#CDCDCD</color>
     <color name="white">#FFFFFF</color>

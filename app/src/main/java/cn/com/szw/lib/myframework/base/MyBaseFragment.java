@@ -34,6 +34,7 @@ public abstract class MyBaseFragment extends Fragment {
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		initView();
+		initEvent();
 		try {
 			RxBus.get().register(this);
 		}catch (Exception e){
@@ -41,4 +42,5 @@ public abstract class MyBaseFragment extends Fragment {
 		}
 	}
 	public  abstract void initView();
+	public  void initEvent(){}
 }

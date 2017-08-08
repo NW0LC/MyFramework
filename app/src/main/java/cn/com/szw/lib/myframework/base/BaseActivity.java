@@ -71,7 +71,7 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
             tintManager.setNavigationBarTintEnabled(true);
 
             // 自定义颜色
-            tintManager.setTintColor(ContextCompat.getColor(mContext, R.color.app_bg));
+            tintManager.setTintColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
         }
     }
 
@@ -102,33 +102,48 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
     }
 
     @Override
+    public void showCameraWithCheck(Intent intent, int requestCode, boolean isService) {
+        BaseActivityPermissionsDispatcher.showCameraWithCheck(this, intent,requestCode,isService);
+    }
+
+    @Override
     public void showCameraWithCheck(Intent intent, boolean isService) {
-        BaseActivityPermissionsDispatcher.showCameraWithCheck(this, intent,isService);
+        BaseActivityPermissionsDispatcher.showCameraWithCheck(this, intent,-1,isService);
+    }
+
+    @Override
+    public void locationAndSMSWithCheck(Intent intent, int requestCode, boolean isService) {
+        BaseActivityPermissionsDispatcher.locationAndSMSWithCheck(this, intent,requestCode,isService);
     }
 
     @Override
     public void locationAndSMSWithCheck(Intent intent, boolean isService) {
-        BaseActivityPermissionsDispatcher.locationAndSMSWithCheck(this, intent,isService);
+        BaseActivityPermissionsDispatcher.locationAndSMSWithCheck(this, intent,-1,isService);
+    }
+
+    @Override
+    public void callPhoneWithCheck(Intent intent, int requestCode, boolean isService) {
+        BaseActivityPermissionsDispatcher.callPhoneWithCheck(this, intent,requestCode,isService);
     }
 
     @Override
     public void callPhoneWithCheck(Intent intent, boolean isService) {
-        BaseActivityPermissionsDispatcher.callPhoneWithCheck(this, intent,isService);
+        BaseActivityPermissionsDispatcher.callPhoneWithCheck(this, intent,-1,isService);
     }
 
     @NeedsPermission({CAMERA, WRITE_EXTERNAL_STORAGE})
-    void showCamera(Intent intent, boolean isService) {
-        startAction(intent, isService,Camera);
+    void showCamera(Intent intent,int requestCode, boolean isService) {
+        startAction(intent, isService,requestCode==-1?Camera:requestCode);
     }
 
     @NeedsPermission({ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION, RECEIVE_SMS, READ_SMS})
-    void locationAndSMS(Intent intent, boolean isService) {
-        startAction(intent, isService,Location);
+    void locationAndSMS(Intent intent,int requestCode, boolean isService) {
+        startAction(intent, isService,requestCode==-1?Location:requestCode);
     }
 
     @NeedsPermission(CALL_PHONE)
-    void callPhone(Intent intent, boolean isService) {
-        startAction(intent, isService,Phone);
+    void callPhone(Intent intent,int requestCode, boolean isService) {
+        startAction(intent, isService,requestCode==-1?Phone:requestCode);
     }
 
     void startAction(Intent intent, boolean isService,int requestCode) {

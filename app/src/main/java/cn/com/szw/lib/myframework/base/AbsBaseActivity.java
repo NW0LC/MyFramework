@@ -32,4 +32,7 @@ interface AbsBaseActivity {
     void showCameraWithCheck(Intent intent,boolean isService);//拍照与读取内存卡，并启动意图，null 不启动
     void locationAndSMSWithCheck(Intent intent,boolean isService);//定位及读取短信。并启动意图，null 不启动
     void callPhoneWithCheck(Intent intent,boolean isService);//电话，并启动意图，null 不启动
+    void showCameraWithCheck(Intent intent,int requestCode,boolean isService);//拍照与读取内存卡，并启动意图，null 不启动
+    void locationAndSMSWithCheck(Intent intent,int requestCode,boolean isService);//定位及读取短信。并启动意图，null 不启动
+    void callPhoneWithCheck(Intent intent,int requestCode,boolean isService);//电话，并启动意图，null 不启动
 }

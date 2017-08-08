@@ -67,8 +67,9 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
     @Override
     public boolean initToolbar() {
         mToolbar.setContentInsetsAbsolute(0, 0);
-        mToolbar.setBackgroundColor(ContextCompat.getColor(mContext, R.color.black));
+        mToolbar.setBackgroundColor(ContextCompat.getColor(mContext, R.color.black_a7000000));
         mMTitle.setTextSize(18);
+        mMTitle.setTextColor(ContextCompat.getColor(mContext,R.color.white));
         mMRightImg.setImageResource(R.mipmap.delete_delete);
         mMRightImg.setPadding(SizeUtils.dp2px(15),SizeUtils.dp2px(15),SizeUtils.dp2px(15),SizeUtils.dp2px(15));
         setSupportActionBar(mToolbar);
@@ -93,8 +94,8 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
         mMLeftImg.setOnClickListener(this);
         mMRightImg.setOnClickListener(this);
         mBtn_save.setOnClickListener(this);
-        ObjectAnimator animator_exit = ObjectAnimator.ofFloat(parentLay, "translationY", 0, SizeUtils.dp2px(-50));
-        ObjectAnimator animator_in = ObjectAnimator.ofFloat(parentLay, "translationY", SizeUtils.dp2px(-50), 0);
+        ObjectAnimator animator_exit = ObjectAnimator.ofFloat(parentLay, "translationY", 0, SizeUtils.dp2px(-55));
+        ObjectAnimator animator_in = ObjectAnimator.ofFloat(parentLay, "translationY", SizeUtils.dp2px(-55), 0);
         LayoutTransition transition = new LayoutTransition();
         transition.setAnimator(LayoutTransition.APPEARING, animator_in);
         transition.setAnimator(LayoutTransition.DISAPPEARING, animator_exit);
@@ -104,19 +105,20 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
     private void initFragment() {
         resultPosition = new ArrayList<>();
         fragments = new ArrayList<>();
-        if (getIntent().getStringArrayListExtra(PREVIEW_INTENT_IMAGES)!=null) {
+        if ((getIntent().getParcelableArrayListExtra(PREVIEW_INTENT_IMAGES) != null && getIntent().getParcelableArrayListExtra(PREVIEW_INTENT_IMAGES).size() > 0) && getIntent().getParcelableArrayListExtra(PREVIEW_INTENT_IMAGES).get(0) instanceof PreviewObject) {
+            imgUrls= getIntent().getParcelableArrayListExtra(PREVIEW_INTENT_IMAGES);
+            isStrs=false;
+            for (T imgUrl : imgUrls) {
+                PreviewFragment fragment = PreviewFragment.Instance(imgUrl.getNormalUrl(),imgUrl.getThumbnailUrl());
+                fragment.setLoadImageLister(this);
+                fragments.add(fragment);
+            }
+
+        }else{
             imgUrlsStrs = getIntent().getStringArrayListExtra(PREVIEW_INTENT_IMAGES);
             isStrs=true;
             for (String imgUrl : imgUrlsStrs) {
                 PreviewFragment fragment = PreviewFragment.Instance(imgUrl,null);
-                fragment.setLoadImageLister(this);
-                fragments.add(fragment);
-            }
-        }else{
-        imgUrls= getIntent().getParcelableArrayListExtra(PREVIEW_INTENT_IMAGES);
-            isStrs=false;
-            for (T imgUrl : imgUrls) {
-                PreviewFragment fragment = PreviewFragment.Instance(imgUrl.getNormalUrl(),imgUrl.getThumbnailUrl());
                 fragment.setLoadImageLister(this);
                 fragments.add(fragment);
             }

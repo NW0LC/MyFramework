@@ -41,7 +41,8 @@ public class MyWebActivity extends BaseActivity implements AdvancedWebView.Liste
     @Override
     public boolean initToolbar() {
         mTitle.setTextSize(18);
-        mTitle.setTextColor(ContextCompat.getColor(this, R.color.yellow));
+        mTitle.setTextColor(ContextCompat.getColor(this, R.color.app_action_title));
+        mTitle.setMaxEms(7);
         toolbar.setContentInsetsAbsolute(0, 0);
         mLeftImg.setOnClickListener(new View.OnClickListener() {
             @Override

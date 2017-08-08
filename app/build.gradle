@@ -112,10 +112,10 @@ dependencies {
 //kotlin语言类库
     compile rootProject.ext.kotlin
 //Anko kotlin 插件 代码布局库
-    compile rootProject.ext.kotlin
     compile rootProject.ext.anko
     compile rootProject.ext.ankoSupprt
     compile rootProject.ext.ankoAppcompat
+    compile rootProject.ext.ankoRecyclerview
 }
 repositories {
     mavenCentral()

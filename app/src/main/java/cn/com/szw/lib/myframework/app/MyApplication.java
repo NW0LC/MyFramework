@@ -50,7 +50,7 @@ public abstract class MyApplication extends MultiDexApplication implements AbsAp
         Fresco.initialize(this);
         Utils.init(this);
         Realm.init(this);
-        spUtils= SPUtils.getInstance("szw");
+        spUtils= SPUtils.getInstance(getPackageName());
         initOkGo();
         //Install  程序崩溃日志初始化
         CustomActivityOnCrash.install(this);

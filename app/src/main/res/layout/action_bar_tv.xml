@@ -28,7 +28,7 @@
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#333333"
+            android:textColor="@color/app_action_title"
             android:textSize="16sp"
             android:text=""
             android:layout_centerVertical="true" />
