@@ -50,18 +50,18 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
 
     // End Of Content View Elements
 
-    public static final String PREVIEW_INTENT_IMAGES ="PREVIEW_INTENT_IMAGES";//图片数据  可以传List<String>也可以传List<?extend PreviewObject> 重写里面方法
-    public static final String PREVIEW_INTENT_POSITION ="PREVIEW_INTENT_POSITION";//图片数据中所在的位置
-    public static final String PREVIEW_INTENT_IS_CAN_DELETE ="PREVIEW_INTENT_IS_CAN_DELETE";//是否可删除
-    public static final String PREVIEW_INTENT_RESULT ="PREVIEW_INTENT_RESULT";//删除的图片下标
+    public static final String PREVIEW_INTENT_IMAGES = "PREVIEW_INTENT_IMAGES";//图片数据  可以传List<String>也可以传List<?extend PreviewObject> 重写里面方法
+    public static final String PREVIEW_INTENT_POSITION = "PREVIEW_INTENT_POSITION";//图片数据中所在的位置
+    public static final String PREVIEW_INTENT_IS_CAN_DELETE = "PREVIEW_INTENT_IS_CAN_DELETE";//是否可删除
+    public static final String PREVIEW_INTENT_SHOW_NUM = "PREVIEW_INTENT_SHOW_NUM";//是否显示1/4
+    public static final String PREVIEW_INTENT_RESULT = "PREVIEW_INTENT_RESULT";//删除的图片下标
     private int position;
     private List<Fragment> fragments;
     private List<T> imgUrls;
     private ArrayList<String> imgUrlsStrs;
-    private ArrayList<Integer> resultPosition;
+    private ArrayList resultPosition;
     private FragmentPagerAdapter mPagerAdapter;
     private boolean isStrs;
-
 
 
     @Override
@@ -69,9 +69,9 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
         mToolbar.setContentInsetsAbsolute(0, 0);
         mToolbar.setBackgroundColor(ContextCompat.getColor(mContext, R.color.black_a7000000));
         mMTitle.setTextSize(18);
-        mMTitle.setTextColor(ContextCompat.getColor(mContext,R.color.white));
+        mMTitle.setTextColor(ContextCompat.getColor(mContext, R.color.white));
         mMRightImg.setImageResource(R.mipmap.delete_delete);
-        mMRightImg.setPadding(SizeUtils.dp2px(15),SizeUtils.dp2px(15),SizeUtils.dp2px(15),SizeUtils.dp2px(15));
+        mMRightImg.setPadding(SizeUtils.dp2px(15), SizeUtils.dp2px(15), SizeUtils.dp2px(15), SizeUtils.dp2px(15));
         setSupportActionBar(mToolbar);
         return false;
     }
@@ -90,7 +90,8 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
     }
 
     private void iniEvent() {
-        mMRightImg.setVisibility(getIntent().getBooleanExtra(PREVIEW_INTENT_IS_CAN_DELETE, false)?View.VISIBLE:View.GONE);
+        mMRightImg.setVisibility(getIntent().getBooleanExtra(PREVIEW_INTENT_IS_CAN_DELETE, false) ? View.VISIBLE : View.GONE);
+        mMTitle.setVisibility(getIntent().getBooleanExtra(PREVIEW_INTENT_SHOW_NUM, false) ? View.VISIBLE : View.GONE);
         mMLeftImg.setOnClickListener(this);
         mMRightImg.setOnClickListener(this);
         mBtn_save.setOnClickListener(this);
@@ -106,19 +107,19 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
         resultPosition = new ArrayList<>();
         fragments = new ArrayList<>();
         if ((getIntent().getParcelableArrayListExtra(PREVIEW_INTENT_IMAGES) != null && getIntent().getParcelableArrayListExtra(PREVIEW_INTENT_IMAGES).size() > 0) && getIntent().getParcelableArrayListExtra(PREVIEW_INTENT_IMAGES).get(0) instanceof PreviewObject) {
-            imgUrls= getIntent().getParcelableArrayListExtra(PREVIEW_INTENT_IMAGES);
-            isStrs=false;
+            imgUrls = getIntent().getParcelableArrayListExtra(PREVIEW_INTENT_IMAGES);
+            isStrs = false;
             for (T imgUrl : imgUrls) {
-                PreviewFragment fragment = PreviewFragment.Instance(imgUrl.getNormalUrl(),imgUrl.getThumbnailUrl());
+                PreviewFragment fragment = PreviewFragment.Instance(imgUrl.getNormalUrl(), imgUrl.getThumbnailUrl());
                 fragment.setLoadImageLister(this);
                 fragments.add(fragment);
             }
 
-        }else{
+        } else {
             imgUrlsStrs = getIntent().getStringArrayListExtra(PREVIEW_INTENT_IMAGES);
-            isStrs=true;
+            isStrs = true;
             for (String imgUrl : imgUrlsStrs) {
-                PreviewFragment fragment = PreviewFragment.Instance(imgUrl,null);
+                PreviewFragment fragment = PreviewFragment.Instance(imgUrl, null);
                 fragment.setLoadImageLister(this);
                 fragments.add(fragment);
             }
@@ -148,7 +149,7 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
             @Override
             public void onPageSelected(int position) {
                 mMTitle.setText((position + 1) + "/" + fragments.size());
-                PreviewActivity.this.position=position;
+                PreviewActivity.this.position = position;
             }
 
             @Override
@@ -157,7 +158,7 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
             }
         });
         mMTitle.setText(String.format("1/%s", fragments.size()));
-        mPreview_viewpager.setCurrentItem(getIntent().getIntExtra(PREVIEW_INTENT_POSITION,0),false);
+        mPreview_viewpager.setCurrentItem(getIntent().getIntExtra(PREVIEW_INTENT_POSITION, 0), false);
     }
 
     private void bindViews() {
@@ -186,6 +187,7 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
 
         }
     }
+
     public void delete() {
         final MaterialDialog materialDialog = new MaterialDialog(this);
         materialDialog.setTitle("提示").setPositiveButton("确定", new View.OnClickListener() {
@@ -193,19 +195,23 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
             public void onClick(View view) {
                 materialDialog.dismiss();
                 Intent intent = new Intent();
-                intent.putIntegerArrayListExtra(PREVIEW_INTENT_RESULT, resultPosition);
                 if (position < imgUrls.size()) {
                     if (isStrs) {
+                        resultPosition.add(imgUrlsStrs.get(position));
                         imgUrlsStrs.remove(position);
-                    }else
-                    imgUrls.remove(position);
+                        intent.putStringArrayListExtra(PREVIEW_INTENT_RESULT, resultPosition);
+                    } else {
+                        resultPosition.add(imgUrls.get(position));
+                        imgUrls.remove(position);
+                        intent.putParcelableArrayListExtra(PREVIEW_INTENT_RESULT, resultPosition);
+                    }
                     fragments.remove(position);
                     if (position + 1 < fragments.size()) {
                         mMTitle.setText((position + 1) + "/" + fragments.size());
                     } else {
                         mMTitle.setText(fragments.size() + "/" + fragments.size());
                     }
-                    resultPosition.add(position);
+
                     mPagerAdapter.notifyDataSetChanged();
                 }
                 setResult(RESULT_OK, intent);
@@ -220,6 +226,7 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
             }
         }).setMessage("要删除这张照片吗？").show();
     }
+
     @Override
     public void complete() {
         mBtn_save.setVisibility(View.VISIBLE);
@@ -232,6 +239,7 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
 
     @Override
     public void onClick() {
-        mToolbar.setVisibility(mToolbar.getVisibility()==View.VISIBLE?View.GONE:View.VISIBLE);
+        mToolbar.setVisibility(mToolbar.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
+        mBtn_save.setVisibility(mBtn_save.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
     }
 }
