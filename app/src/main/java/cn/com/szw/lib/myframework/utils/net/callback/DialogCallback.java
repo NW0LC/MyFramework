@@ -47,6 +47,7 @@ public abstract class DialogCallback<T extends NetEntity> extends JsonCallback<T
     @Override
     public void onError(Response<T> response) {
         super.onError(response);
+        CustomProgress.disMiss();
         StringBuilder sb;
         Call call = response.getRawCall();
         if (call != null) {
@@ -54,8 +55,7 @@ public abstract class DialogCallback<T extends NetEntity> extends JsonCallback<T
             if (e!=null) {
                 if (e instanceof UnknownHostException) {
                     Toast.makeText(context, "网络未连接，请打开网络后再次尝试。", Toast.LENGTH_SHORT).show();
-                }else
-                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
             Log.e("OkGo", "请求失败  请求方式：" + call.request().method() + "\n" + "url：" + call.request().url());
         }

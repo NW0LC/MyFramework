@@ -25,7 +25,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
 
 import cat.ereza.customactivityoncrash.CustomActivityOnCrash;
-import cn.com.szw.lib.myframework.entities.User;
+import cn.com.szw.lib.myframework.entities.AbsUser;
 import io.realm.Realm;
 import okhttp3.OkHttpClient;
 
@@ -156,7 +156,7 @@ public abstract class MyApplication extends MultiDexApplication implements AbsAp
     }
 
 //===================================================================================================================
-    private static User user;
+    private static AbsUser user;
 
 
 
@@ -175,16 +175,21 @@ public abstract class MyApplication extends MultiDexApplication implements AbsAp
         }
     }
 
-    public static User getUser() {
+    public static AbsUser getUser() {
         if (user == null) {
-            return new User();
+            return new AbsUser() {
+                @Override
+                public String getUserId() {
+                    return "";
+                }
+            };
         } else {
             return user;
         }
     }
 
-    public static void setUser(User user) {
-        MyApplication.user = user;
+    public static void  setUser(AbsUser user) {
+        MyApplication.user=user;
     }
 
     //===================================================================================================================
