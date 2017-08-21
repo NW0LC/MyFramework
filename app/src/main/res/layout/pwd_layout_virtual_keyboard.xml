@@ -18,14 +18,14 @@
         android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_above="@id/gv_keybord"
+        android:layout_above="@+id/gv_keybord"
         android:background="#bdbdbd" />
 
     <RelativeLayout
         android:id="@+id/layoutBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/line"
+        android:layout_above="@+id/line"
         android:background="#f5f5f5"
         android:padding="10dp">
 

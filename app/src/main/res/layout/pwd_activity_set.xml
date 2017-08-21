@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <include layout="@layout/action_bar_tv"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/action_bar_tv" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="@dimen/margin_90"
+        android:gravity="center"
+        android:text="输入支付密码，以验证身份"
+        android:textColor="@color/black_333333"
+        android:textSize="@dimen/sp_14" />
 
     <cn.com.szw.lib.myframework.view.pwd.widget.PasswordView
         android:id="@+id/mPasswordView"

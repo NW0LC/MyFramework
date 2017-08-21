@@ -43,9 +43,8 @@ public abstract class MyApplication extends MultiDexApplication implements AbsAp
      * 本地存储
      */
     private SPUtils spUtils;
-    @Override
-    public void onCreate() {
-        super.onCreate();
+
+    public  void  init(){
         salt=getSalt();
         Fresco.initialize(this);
         Utils.init(this);
@@ -54,7 +53,6 @@ public abstract class MyApplication extends MultiDexApplication implements AbsAp
         initOkGo();
         //Install  程序崩溃日志初始化
         CustomActivityOnCrash.install(this);
-
     }
     public static SPUtils getSPUtils(Context context) {
         MyApplication application = (MyApplication) context.getApplicationContext();

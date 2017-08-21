@@ -13,6 +13,13 @@ public class Constants {
 		public static int STATE_LOAD_MORE =1;
 	}
 	/**
+	 * 结果回执码
+	 */
+	public static class Result{
+		public static String Intent_ClassName ="Intent_ClassName";
+		public static int Result_Login_Ok =200;
+	}
+	/**
 	 * 网络码
 	 */
 	public static class NetCode{
