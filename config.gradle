@@ -37,12 +37,13 @@ ext {
     AndroidDrawingView = 'com.github.vilyever:AndroidDrawingView:latest.release'
 
     // ------------- 权限申请 -------------
-//            permission                   ='com.yanzhenjie:permission:latest.release'
+//            permission='com.yanzhenjie:permission:latest.release'
     permissionsdispatcher = 'com.github.hotchemi:permissionsdispatcher:latest.release'
     permissionsdispatcherProcessor = 'com.github.hotchemi:permissionsdispatcher-processor:latest.release'
 
     // ------------- 轮播 -------------
     rollviewpager = 'com.jude:rollviewpager:latest.release'
+    banner = 'com.youth.banner:banner:+'
 
     // ------------- 沉浸状态栏 -------------
     systembartint = 'com.readystatesoftware.systembartint:systembartint:latest.release'
@@ -57,7 +58,7 @@ ext {
     customactivityoncrash = 'cat.ereza:customactivityoncrash:latest.release'
 
     // ------------- dialog -------------
-//            CommonAlertPop               =':CommonAlertPop'
+//            CommonAlertPop=':CommonAlertPop'
     CommonAlertPop = 'com.github.PopFisher:SmartAlertPop:c505c4b4b1'
     materialdialog = 'me.drakeet.materialdialog:library:latest.release'
 
