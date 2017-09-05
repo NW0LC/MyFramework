@@ -5,14 +5,17 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
+import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -73,6 +76,19 @@ public class MyWebActivity extends BaseActivity implements AdvancedWebView.Liste
         mWebView.loadUrl(getIntent().getStringExtra(Intent_Url));
         // 支持js
         mWebView.getSettings().setJavaScriptEnabled(true);
+        //启用数据库
+        WebSettings webSettings = mWebView.getSettings();
+        webSettings.setDatabaseEnabled(true);
+        String dir = this.getApplicationContext().getDir("database", Context.MODE_PRIVATE).getPath();
+
+//启用地理定位
+        webSettings.setGeolocationEnabled(true);
+//设置定位的数据库路径
+        webSettings.setGeolocationDatabasePath(dir);
+
+//最重要的方法，一定要设置，这就是出不来的主要原因
+
+        webSettings.setDomStorageEnabled(true);
         mWebView.setBackgroundColor(ContextCompat.getColor(mContext,R.color.app_bg));
         // 拦截url
         mWebView.setWebViewClient(new WebViewClient() {
@@ -104,6 +120,11 @@ public class MyWebActivity extends BaseActivity implements AdvancedWebView.Liste
                     // 开启属性动画让进度条平滑递增
                     startProgressAnimation(newProgress);
                 }
+            }
+            //配置权限（同样在WebChromeClient中实现）
+            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+                callback.invoke(origin, true, false);
+                super.onGeolocationPermissionsShowPrompt(origin, callback);
             }
         });
 

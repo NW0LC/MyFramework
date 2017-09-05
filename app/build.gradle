@@ -45,6 +45,8 @@ dependencies {
     compile rootProject.ext.retrolambda
     //轮播
     compile rootProject.ext.rollviewpager
+    //轮播
+    compile rootProject.ext.banner
     //沉浸状态栏
     compile rootProject.ext.systembartint
     //小工具

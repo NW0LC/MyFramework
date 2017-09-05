@@ -7,12 +7,12 @@ public class SimpleResponse implements Serializable {
     private static final long serialVersionUID = -1477609349345966116L;
 
     public String code;
-    public String msg;
+    public String message;
 
     public NetEntity toNetEntity() {
         NetEntity netEntity = new NetEntity();
         netEntity.setCode(code);
-        netEntity.setMessage(msg);
+        netEntity.setMessage(message);
         return netEntity;
     }
 }

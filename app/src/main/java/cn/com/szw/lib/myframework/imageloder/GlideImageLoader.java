@@ -26,6 +26,13 @@ public class GlideImageLoader implements ImageLoader {
     }
 
     @Override
+    public void displayImagePreview(Activity activity, String path, ImageView imageView, int width, int height) {
+        Glide.with(activity)
+                .load(Uri.fromFile(new File(path)))
+                .into(imageView).onLoadFailed(ContextCompat.getDrawable(activity,R.mipmap.loading_1));
+    }
+
+    @Override
     public void clearMemoryCache() {
     }
 

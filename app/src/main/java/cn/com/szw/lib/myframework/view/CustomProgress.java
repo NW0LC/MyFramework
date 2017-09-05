@@ -15,6 +15,7 @@
     public class CustomProgress extends Dialog {
 
         private static CustomProgress sPrograss;
+        private static Thread thread ;
 
         public CustomProgress(Context context) {
             super(context);
@@ -63,6 +64,11 @@
          * @return
          */
         public static CustomProgress show(Context context, CharSequence message, boolean cancelable, OnCancelListener cancelListener) {
+            if (thread!=null&&thread.isAlive()) {
+                thread.interrupt();
+                return sPrograss;
+            }
+
             if (sPrograss!=null&&sPrograss.isShowing()){
                 return sPrograss;}
             sPrograss = new CustomProgress(context, R.style.Custom_Progress);
@@ -99,7 +105,19 @@
          */
         public static void disMiss() {
             if (sPrograss != null && sPrograss.isShowing()) {
-                sPrograss.dismiss();
+                thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(1500);
+                            sPrograss.dismiss();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                thread.start();
+
             }
         }
     }
