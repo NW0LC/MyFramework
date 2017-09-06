@@ -172,7 +172,9 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
         } catch (Exception e) {
             e.printStackTrace();
         }
-        CustomProgress.getsPrograss().dismiss();
+        if (CustomProgress.getsPrograss()!=null){
+            CustomProgress.getsPrograss().dismiss();
+        }
         super.onDestroy();
     }
 
