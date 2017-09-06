@@ -14,6 +14,10 @@
 
     public class CustomProgress extends Dialog {
 
+        public static CustomProgress getsPrograss() {
+            return sPrograss;
+        }
+
         private static CustomProgress sPrograss;
         private static Thread thread ;
 
