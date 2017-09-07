@@ -3,7 +3,27 @@
     package="cn.com.szw.lib.myframework">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!--友盟权限-->
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>-->
+    <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
+    <!--<uses-permission android:name="android.permission.INTERNET"/>-->
+    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE"/>-->
+    <!--end-->
     <application >
+<!--友盟的统计配置-->
+        <!--<meta-data android:value="YOUR_APP_KEY" android:name="UMENG_APPKEY"/>-->
+        <!--<meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>-->
+<!--end-->
+
+<!--崩溃页面  需要将这个加入 重启的activity  并在自己的application里 初始化 CustomActivityOnCrash.install(this);-->
+        <!--<intent-filter>-->
+            <!--&lt;!&ndash; ... &ndash;&gt;-->
+            <!--<action android:name="cat.ereza.customactivityoncrash.RESTART" />-->
+        <!--</intent-filter>-->
+<!--end-->
+
+
         <!--外链-->
         <activity android:name=".view.MyWebActivity"/>
         <!--图片展示，或选择删除-->

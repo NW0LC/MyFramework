@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.lzy.imagepicker.view.SystemBarTintManager;
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
 import cn.com.szw.lib.myframework.R;
@@ -163,6 +164,16 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         BaseActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+    }
+    public void onResume() {
+        super.onResume();
+//      友盟统计
+        MobclickAgent.onResume(this);
+    }
+    public void onPause() {
+        super.onPause();
+//      友盟统计
+        MobclickAgent.onPause(this);
     }
 
     @Override

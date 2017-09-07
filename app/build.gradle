@@ -118,6 +118,10 @@ dependencies {
     compile rootProject.ext.ankoSupprt
     compile rootProject.ext.ankoAppcompat
     compile rootProject.ext.ankoRecyclerview
+//友盟统计
+    compile rootProject.ext.umengAnalytics
+
+
 }
 repositories {
     mavenCentral()

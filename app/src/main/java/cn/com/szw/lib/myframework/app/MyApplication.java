@@ -14,6 +14,7 @@ import com.lzy.okgo.cookie.CookieJarImpl;
 import com.lzy.okgo.cookie.store.DBCookieStore;
 import com.lzy.okgo.https.HttpsUtils;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
+import com.umeng.analytics.MobclickAgent;
 
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -24,7 +25,6 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.X509TrustManager;
 
-import cat.ereza.customactivityoncrash.CustomActivityOnCrash;
 import cn.com.szw.lib.myframework.entities.AbsUser;
 import io.realm.Realm;
 import okhttp3.OkHttpClient;
@@ -49,11 +49,19 @@ public abstract class MyApplication extends MultiDexApplication implements AbsAp
         Fresco.initialize(this);
         Utils.init(this);
         Realm.init(this);
+        UmengInit(this);
         spUtils= SPUtils.getInstance(getPackageName());
         initOkGo();
         //Install  程序崩溃日志初始化
-        CustomActivityOnCrash.install(this);
+//        CustomActivityOnCrash.install(this);
     }
+
+    private void UmengInit(MyApplication myApplication) {
+        MobclickAgent.setScenarioType(myApplication, MobclickAgent.EScenarioType. E_UM_NORMAL);
+        MobclickAgent.setDebugMode( true );
+    }
+
+
     public static SPUtils getSPUtils(Context context) {
         MyApplication application = (MyApplication) context.getApplicationContext();
         return application.spUtils;
