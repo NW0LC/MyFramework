@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -170,20 +169,16 @@ public class MyWebActivity extends BaseActivity implements AdvancedWebView.Liste
         anim.start();
     }
 
-    @SuppressLint("NewApi")
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         mWebView.onResume();
-        // ...
     }
 
-    @SuppressLint("NewApi")
     @Override
-    protected void onPause() {
-        mWebView.onPause();
-        // ...
+    public void onPause() {
         super.onPause();
+        mWebView.onPause();
     }
 
     @Override
