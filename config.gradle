@@ -1,7 +1,7 @@
 ext {
 
     support = "26.0.0-alpha1"
-    kotlin_version = '1.1.4-2'
+    kotlin_version = '1.1.4-3'
 
     // ------------- Android -------------
 //            supportV4            ='com.android.support:support-v4:${dependVersion.support}"
@@ -62,8 +62,11 @@ ext {
     CommonAlertPop = 'com.github.PopFisher:SmartAlertPop:c505c4b4b1'
     materialdialog = 'me.drakeet.materialdialog:library:latest.release'
 
-    // ------------- tableLayout -------------
+    // ------------- flyco -------------
+    //tabLayout
     FlycoTabLayout_Lib = 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //圆角view
+    FlycoRoundview_Lib = 'com.flyco.roundview:FlycoRoundView_Lib:1.1.4@aar'
 
     // ------------- recyclerView adapter封装类 -------------
     BaseRecyclerViewAdapterHelper = 'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.release'
@@ -81,8 +84,10 @@ ext {
     ImagePicker = 'com.lzy.widget:imagepicker:latest.release'
     glide = 'com.github.bumptech.glide:glide:4.0.0-RC0'
     glideCompiler = 'com.github.bumptech.glide:compiler:4.0.0-RC0'
-    picasso = 'com.squareup.picasso:picasso:latest.release'
     photoView = 'com.github.chrisbanes:PhotoView:latest.release'
+    gif = 'pl.droidsonroids.gif:android-gif-drawable:+'
+    //圆形图片
+    circleimageview = 'de.hdodenhof:circleimageview:+'
 
     // ------------- 回调 -------------//
     rxbus = 'com.hwangjr.rxbus:rxbus:latest.release'
@@ -116,9 +121,6 @@ ext {
     //====================圆圈加数字指示========================
     circleNum = 'q.rorbin:badgeview:latest.release'
 
-    //====================蓝牙========================
-    bluetooth = 'com.inuker.bluetooth:library:latest.release'
-
     //====================//HTML Parser html解析========================
     jsoup = 'org.jsoup:jsoup:+'
 
@@ -137,5 +139,11 @@ ext {
 
     //====================//umeng统计========================
     umengAnalytics = "com.umeng.analytics:analytics:latest.integration"
+
+    //====================//毛玻璃view========================
+    realtimeblurview = 'com.github.mmin18:realtimeblurview:+'
+
+    //====================//上下拉刷新========================
+    SmartRefreshLayout = 'com.scwang.smartrefresh:SmartRefreshLayout:+'
 
 }

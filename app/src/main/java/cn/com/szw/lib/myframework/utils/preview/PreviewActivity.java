@@ -54,7 +54,7 @@ public class PreviewActivity<T extends PreviewObject> extends BaseActivity imple
     public static final String PREVIEW_INTENT_POSITION = "PREVIEW_INTENT_POSITION";//图片数据中所在的位置
     public static final String PREVIEW_INTENT_IS_CAN_DELETE = "PREVIEW_INTENT_IS_CAN_DELETE";//是否可删除
     public static final String PREVIEW_INTENT_SHOW_NUM = "PREVIEW_INTENT_SHOW_NUM";//是否显示1/4
-    public static final String PREVIEW_INTENT_RESULT = "PREVIEW_INTENT_RESULT";//删除的图片下标
+    public static final String PREVIEW_INTENT_RESULT = "PREVIEW_INTENT_RESULT";//删除的图片集合
     private int position;
     private List<Fragment> fragments;
     private List<T> imgUrls;

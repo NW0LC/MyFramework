@@ -13,6 +13,10 @@ android {
         versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+
+        renderscriptTargetApi 25
+        renderscriptSupportModeEnabled true    // Enable RS support
     }
     buildTypes {
         release {
@@ -72,10 +76,14 @@ dependencies {
     compile rootProject.ext.materialdialog
     // tableLayout
     compile rootProject.ext.FlycoTabLayout_Lib
+    // 圆角view
+    compile rootProject.ext.FlycoRoundview_Lib
     //加载图片
     compile rootProject.ext.glide
     annotationProcessor  rootProject.ext.glideCompiler
     compile rootProject.ext.ImagePicker
+    compile rootProject.ext.gif
+    compile rootProject.ext.circleimageview
 //    compile rootProject.ext.photoView
     //上下滑动选择器
     compile rootProject.ext.pickerview
@@ -105,12 +113,14 @@ dependencies {
     compile rootProject.ext.flowlayout
 //    圆圈加数字指示
     compile rootProject.ext.circleNum
-//    蓝牙
-    compile rootProject.ext.bluetooth
 //    HTML Parser html解析
     compile rootProject.ext.jsoup
 //    用于解析Adobe After Effects动画
     compile rootProject.ext.lottie
+//    毛玻璃view
+    compile rootProject.ext.realtimeblurview
+//    毛玻璃view
+    compile rootProject.ext.SmartRefreshLayout
 //kotlin语言类库
     compile rootProject.ext.kotlin
 //Anko kotlin 插件 代码布局库

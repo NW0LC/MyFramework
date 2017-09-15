@@ -1,30 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="cn.com.szw.demo.MainActivity">
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
-      <LinearLayout
-          android:orientation="vertical"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
-         <com.airbnb.lottie.LottieAnimationView
-             android:id="@+id/animation_view"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             app:lottie_fileName="hello-world.json"
-             app:lottie_loop="true"
-             app:lottie_autoPlay="true" />
-         <android.support.v7.widget.RecyclerView
-             android:id="@+id/recycler"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cn.com.szw.demo.MainActivity">
 
-         </android.support.v7.widget.RecyclerView>
-      </LinearLayout>
-   </ScrollView>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlDragRate="0.7"
+        app:srlEnableAutoLoadmore="true"
+        app:srlEnablePreviewInEditMode="true"
+        app:srlHeaderHeight="150dp"
+        app:srlHeaderMaxDragRate="1.3">
 
-</android.support.constraint.ConstraintLayout>
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gifview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/gif_header_repast"
+            app:layout_srlBackgroundColor="@android:color/transparent"
+            app:layout_srlSpinnerStyle="Scale" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1500dp"
+                    android:layout_marginTop="?attr/actionBarSize"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/gif_header_repast"
+                    app:layout_srlBackgroundColor="@android:color/transparent"
+                    app:layout_srlSpinnerStyle="Scale" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1500dp"
+                    android:background="@color/camera_progress_three" />
+            </LinearLayout>
+        </ScrollView>
+
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <com.github.mmin18.widget.RealtimeBlurView
+        android:id="@+id/blurview"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:visibility="visible" />
+
+    <include layout="@layout/action_bar_tv" />
+
+</FrameLayout>
