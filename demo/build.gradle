@@ -24,16 +24,16 @@ android {
         }
     }
 }
-configurations.all {
-    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-        def requested = details.requested
-        if (requested.group == 'com.android.support') {
-            if (!requested.name.startsWith("multidex")) {
-                details.useVersion '26.0.0-alpha1'
-            }
-        }
-    }
-}
+//configurations.all {
+//    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+//        def requested = details.requested
+//        if (requested.group == 'com.android.support') {
+//            if (!requested.name.startsWith("multidex")) {
+//                details.useVersion '26.0.0-alpha1'
+//            }
+//        }
+//    }
+//}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -41,6 +41,8 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:+'
+    compile"com.android.support:design:+"
+    compile'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.release'
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:+'
     compile 'com.github.mmin18:realtimeblurview:+'
     compile 'pl.droidsonroids.gif:android-gif-drawable:+'

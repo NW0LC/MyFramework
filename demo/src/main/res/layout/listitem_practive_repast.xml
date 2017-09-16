@@ -22,7 +22,7 @@
         android:gravity="center"
         android:padding="10dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/avatar"
             android:layout_width="55dp"
             android:layout_height="55dp"

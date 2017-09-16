@@ -1,64 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:background="#00000000">
-    <RelativeLayout
-        android:id="@+id/parent_lay"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.github.mmin18.widget.RealtimeBlurView
+        android:id="@+id/blurview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center">
-        <TextView
-            android:id="@+id/mLeft"
-            android:visibility="visible"
-            android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:visibility="visible" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:layout_collapseMode="pin"
+        >
+        <android.support.v7.widget.ButtonBarLayout
+            android:id="@+id/buttonBarLayout"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_centerVertical="true"/>
-        <TextView
-            android:id="@+id/mTitle"
-            android:gravity="center"
-            android:background="@null"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="12345678978777777"
-            android:lines="1"
-            android:ellipsize="end"
-            android:maxEms="10"
-            android:layout_centerVertical="true" />
-        <TextView
-            android:id="@+id/mRight"
-            android:layout_marginEnd="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            tools:ignore="ContentDescription"
-            />
-        <ImageView
-            android:id="@+id/mRightImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:scaleType="center"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            tools:ignore="ContentDescription" />
-        <ImageView
-            tools:ignore="ContentDescription"
-            android:id="@+id/mLeftImg"
-            android:layout_width="48dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:src="@mipmap/ic_launcher"
-            android:scaleType="center"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"/>
-    </RelativeLayout>
-</android.support.v7.widget.Toolbar>
+            android:layout_width="wrap_content">
+
+            <TextView
+                android:id="@+id/mTitle"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@null"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:lines="1"
+                android:maxEms="10"
+                android:text="中心"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/mRight"
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/mRightImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="end"
+                android:scaleType="center"
+                tools:ignore="ContentDescription" />
+
+
+        </android.support.v7.widget.ButtonBarLayout>
+    </android.support.v7.widget.Toolbar>
+
+</RelativeLayout>
