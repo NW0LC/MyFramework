@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'realm-android'
 apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 26
@@ -40,13 +39,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:+'
-    compile"com.android.support:design:+"
-    compile'com.github.CymChad:BaseRecyclerViewAdapterHelper:latest.release'
-    compile 'com.scwang.smartrefresh:SmartRefreshLayout:+'
-    compile 'com.github.mmin18:realtimeblurview:+'
-    compile 'pl.droidsonroids.gif:android-gif-drawable:+'
+
 //    compile 'com.github.NW0LC:MyFramework:1.0.10'
 //        compile project (':app')
+        compile project (':Flibrary')
 
 }
