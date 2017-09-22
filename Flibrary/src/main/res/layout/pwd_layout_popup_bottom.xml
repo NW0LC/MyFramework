@@ -282,7 +282,7 @@
             android:layout_gravity="right"
             android:layout_margin="15dp"
             android:text="忘记密码？"
-            android:textColor="@color/black_333333" />
+            android:textColor="#333333" />
 
     </LinearLayout>
 

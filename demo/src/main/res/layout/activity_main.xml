@@ -40,6 +40,6 @@
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-    <include layout="@layout/action_bar_tv" />
+    <include layout="@layout/action_bar_custom" />
 
 </FrameLayout>

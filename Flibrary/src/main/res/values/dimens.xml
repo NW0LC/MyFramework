@@ -41,10 +41,4 @@
     <dimen name="text_20">20sp</dimen>
     <dimen name="text_22">22sp</dimen>
     <dimen name="text_24">24sp</dimen>
-
-    <dimen name="viewpager_height">240dp</dimen>
-    <dimen name="indicator_size">6dp</dimen>
-    <dimen name="indicator_margin">6dp</dimen>
-    <dimen name="header_height">200dip</dimen>
-    <dimen name="tabs_height">64dip</dimen>
 </resources>

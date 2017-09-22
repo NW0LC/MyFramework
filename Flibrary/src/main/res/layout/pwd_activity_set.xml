@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/action_bar_tv" />
+    <include layout="@layout/action_bar_custom" />
 
     <TextView
         android:id="@+id/info"
@@ -13,7 +13,6 @@
         android:layout_marginTop="@dimen/margin_90"
         android:gravity="center"
         android:text="输入支付密码，以验证身份"
-        android:textColor="@color/black_333333"
         android:textSize="@dimen/sp_14" />
 
     <com.szw.framelibrary.view.pwd.widget.PasswordView

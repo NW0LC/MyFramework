@@ -7,19 +7,14 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">#f7c303</item>
         <item name="android:textColorHint">#e1e1e1</item>
-        <item name="colorControlNormal">@color/white</item>
-        <item name="colorControlActivated">@color/white</item>
-        <item name="colorControlHighlight">@color/white</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+        <item name="colorControlHighlight">@android:color/white</item>
         <item name="android:listDivider">@drawable/divider_grid_pop</item>
         <!--<item name="android:windowTranslucentStatus">true</item>-->
     </style>
 
-    <style name="AppTheme.Toolbar.Light">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:theme">@style/ThemeOverlay.AppCompat.Light</item>
-    </style>
+
     <!-- 自定义Dialog -->
     <style name="Custom_Progress" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>

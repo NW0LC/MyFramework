@@ -40,7 +40,7 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 
-//    compile 'com.github.NW0LC:MyFramework:1.0.10'
+//    compile 'com.github.NW0LC:KtFramework:1.0.0'
 //        compile project (':app')
         compile project (':Flibrary')
 

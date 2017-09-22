@@ -51,6 +51,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
     //    compile 'com.github.chrisbanes:PhotoView:+'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
+//    颜色资源
+    compile 'com.github.vilyever:AndroidResource:1.2.1'
     //====================小工具========================
     compile 'com.blankj:utilcode:latest.release'
     //====================网络请求========================

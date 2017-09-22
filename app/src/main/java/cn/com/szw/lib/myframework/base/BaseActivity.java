@@ -108,32 +108,32 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
 
     @Override
     public void showCameraWithCheck(Intent intent, int requestCode, boolean isService) {
-        BaseActivityPermissionsDispatcher.showCameraWithCheck(this, intent,requestCode,isService);
+        BaseActivityPermissionsDispatcher.showCameraWithPermissionCheck(this, intent,requestCode,isService);
     }
 
     @Override
     public void showCameraWithCheck(Intent intent, boolean isService) {
-        BaseActivityPermissionsDispatcher.showCameraWithCheck(this, intent,-1,isService);
+        BaseActivityPermissionsDispatcher.showCameraWithPermissionCheck(this, intent,-1,isService);
     }
 
     @Override
     public void locationAndSMSWithCheck(Intent intent, int requestCode, boolean isService) {
-        BaseActivityPermissionsDispatcher.locationAndSMSWithCheck(this, intent,requestCode,isService);
+        BaseActivityPermissionsDispatcher.locationAndSMSWithPermissionCheck(this, intent,requestCode,isService);
     }
 
     @Override
     public void locationAndSMSWithCheck(Intent intent, boolean isService) {
-        BaseActivityPermissionsDispatcher.locationAndSMSWithCheck(this, intent,-1,isService);
+        BaseActivityPermissionsDispatcher.locationAndSMSWithPermissionCheck(this, intent,-1,isService);
     }
 
     @Override
     public void callPhoneWithCheck(Intent intent, int requestCode, boolean isService) {
-        BaseActivityPermissionsDispatcher.callPhoneWithCheck(this, intent,requestCode,isService);
+        BaseActivityPermissionsDispatcher.callPhoneWithPermissionCheck(this, intent,requestCode,isService);
     }
 
     @Override
     public void callPhoneWithCheck(Intent intent, boolean isService) {
-        BaseActivityPermissionsDispatcher.callPhoneWithCheck(this, intent,-1,isService);
+        BaseActivityPermissionsDispatcher.callPhoneWithPermissionCheck(this, intent,-1,isService);
     }
 
     @NeedsPermission({CAMERA, WRITE_EXTERNAL_STORAGE})
