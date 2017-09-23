@@ -1,9 +1,7 @@
 package cn.com.szw.demo
 
 
-import android.app.Activity
 import android.content.Intent
-import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -13,22 +11,35 @@ import com.lzy.okgo.model.Response
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import com.szw.framelibrary.base.BaseActivity
 import com.szw.framelibrary.utils.net.NetEntity
 import com.szw.framelibrary.utils.net.callback.DialogCallback
-import java.util.*
+import com.umeng.message.inapp.InAppMessageManager
+import org.jetbrains.anko.toast
 
-class MainActivity : Activity(), OnRefreshListener {
+
+class MainActivity : BaseActivity(), OnRefreshListener {
+    override fun initToolbar(): Boolean {
+        return false
+    }
+
+    override fun setInflateId(): Int =R.layout.activity_main
+
     lateinit var viewById: SmartRefreshLayout
     val adapter = AddressAdapter()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+    override fun init() {
+        InAppMessageManager.getInstance(this).showCardMessage(this, "main"
+        ) {
+                toast("走了走了")
+        }
+
         //状态栏透明和间距处理
         StatusBarUtil.darkMode(this)
         val rec = findViewById<RecyclerView>(R.id.recyclerView)
         StatusBarUtil.setPaddingSmart(this, rec)
         StatusBarUtil.setPaddingSmart(this, findViewById<View>(R.id.toolbar))
-        StatusBarUtil.setPaddingSmart(this, findViewById<View>(R.id.blurview))
+        StatusBarUtil.setPaddingSmart(this, findViewById<View>(R.id.blurView))
         StatusBarUtil.setMargin(this, findViewById<View>(R.id.gifview))
 
         rec.layoutManager = LinearLayoutManager(this)

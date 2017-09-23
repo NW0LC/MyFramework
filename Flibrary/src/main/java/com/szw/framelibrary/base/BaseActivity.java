@@ -17,6 +17,7 @@ import com.szw.framelibrary.R;
 import com.szw.framelibrary.config.Constants;
 import com.szw.framelibrary.view.CustomProgress;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.message.PushAgent;
 
 import butterknife.ButterKnife;
 import permissions.dispatcher.NeedsPermission;
@@ -29,6 +30,7 @@ import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.READ_SMS;
 import static android.Manifest.permission.RECEIVE_SMS;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static anet.channel.util.Utils.context;
 
 
 /**
@@ -51,6 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
         setContentView(setInflateId());
         mContext = this;
         ButterKnife.bind(this);
+        PushAgent.getInstance(context).onAppStart();
         try {
             init();
             init(savedInstanceState);
@@ -106,7 +109,7 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
 
     @Override
     public void PermissionCameraWithCheck(Intent intent, int requestCode, boolean isService) {
-//        BaseActivityPermissionsDispatcher.PermissionCameraWithCheck(this, intent,requestCode,isService);
+        BaseActivityPermissionsDispatcher.PermissionCameraWithPermissionCheck(this, intent,requestCode,isService);
     }
 
     @Override
@@ -175,7 +178,7 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        BaseActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+        BaseActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
     public void onResume() {
         super.onResume();

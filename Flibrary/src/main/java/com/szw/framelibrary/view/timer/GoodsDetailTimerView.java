@@ -249,7 +249,7 @@ public class GoodsDetailTimerView extends LinearLayout {
         private TextView getNumTv() {
             if (numTv == null) {
                 numTv = new TextView(context);
-                numTv.setTextColor(ContextCompat.getColor(context, R.color.orange));
+                numTv.setTextColor(ContextCompat.getColor(context, R.color.Orange));
                 numTv.setBackgroundColor(Color.WHITE);
                 numTv.setTextSize(12);
             }
@@ -259,7 +259,7 @@ public class GoodsDetailTimerView extends LinearLayout {
         private TextView getUnitTv() {
             if (unitTv == null) {
                 unitTv = new TextView(context);
-                unitTv.setTextColor(ContextCompat.getColor(context,R.color.orange));
+                unitTv.setTextColor(ContextCompat.getColor(context,R.color.Orange));
 
             }
             return unitTv;

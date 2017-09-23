@@ -16,6 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity
+            android:name=".SplashTestActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_Umeng_Push_Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,6 +33,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".OtherActivity"/>
+
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="59c5ca8d07fe650b7500004b">
+        </meta-data>
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="525ebc3f46ac580c94a408012e8a65ef">
+        </meta-data>
     </application>
 
 </manifest>

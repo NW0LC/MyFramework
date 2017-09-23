@@ -4,6 +4,7 @@ import android.animation.LayoutTransition
 import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Parcelable
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
@@ -48,9 +49,9 @@ class PreviewActivity<T : PreviewObject> : BaseActivity(), View.OnClickListener,
 
     override fun initToolbar(): Boolean {
         mToolbar.setContentInsetsAbsolute(0, 0)
-        mToolbar.setBackgroundColor(ContextCompat.getColor(mContext, R.color.black_a7000000))
+        mToolbar.setBackgroundColor(Color.parseColor("#a7000000"))
         mMTitle.textSize = 18f
-        mMTitle.setTextColor(ContextCompat.getColor(mContext, R.color.white))
+        mMTitle.setTextColor(ContextCompat.getColor(mContext, R.color.White))
         mMRightImg.setImageResource(R.drawable.ic_delete_black_24dp)
         mMRightImg.setPadding(SizeUtils.dp2px(15f), SizeUtils.dp2px(15f), SizeUtils.dp2px(15f), SizeUtils.dp2px(15f))
         setSupportActionBar(mToolbar)
