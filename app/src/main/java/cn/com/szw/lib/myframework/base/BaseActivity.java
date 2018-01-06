@@ -14,7 +14,6 @@ import android.view.WindowManager;
 import com.lzy.imagepicker.view.SystemBarTintManager;
 import com.umeng.analytics.MobclickAgent;
 
-import butterknife.ButterKnife;
 import cn.com.szw.lib.myframework.R;
 import cn.com.szw.lib.myframework.utils.RxBus;
 import cn.com.szw.lib.myframework.view.CustomProgress;
@@ -52,7 +51,6 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         setContentView(setInflateId());
         mContext = this;
-        ButterKnife.bind(this);
         try {
             init();
             init(savedInstanceState);

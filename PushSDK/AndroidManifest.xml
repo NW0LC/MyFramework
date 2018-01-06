@@ -22,6 +22,14 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="59c5ca8d07fe650b7500004b">
+        </meta-data>
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="525ebc3f46ac580c94a408012e8a65ef">
+        </meta-data>
 
         <service
             android:name="com.taobao.accs.ChannelService"

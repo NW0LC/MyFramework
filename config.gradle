@@ -105,9 +105,9 @@ ext {
 
     greendao = 'org.greenrobot:greendao:3.2.0'
 
-    // ------------- ButterKnife -------------
-    butterknife = 'com.jakewharton:butterknife:latest.release'
-    butterknifeCompiler = 'com.jakewharton:butterknife-compiler:latest.release'
+//    // ------------- ButterKnife -------------
+//    butterknife = 'com.jakewharton:butterknife:latest.release'
+//    butterknifeCompiler = 'com.jakewharton:butterknife-compiler:latest.release'
 
     // ------------- 星星之间的间距 -------------
     xlhratingbar_lib = 'com.xingliuhua:xlhratingbar_lib:latest.release'

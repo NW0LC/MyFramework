@@ -19,7 +19,6 @@ import com.szw.framelibrary.view.CustomProgress;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 
-import butterknife.ButterKnife;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 
@@ -52,7 +51,6 @@ public abstract class BaseActivity extends AppCompatActivity implements AbsBaseA
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         setContentView(setInflateId());
         mContext = this;
-        ButterKnife.bind(this);
         PushAgent.getInstance(context).onAppStart();
         try {
             init();

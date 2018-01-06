@@ -4,6 +4,7 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -33,16 +34,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".OtherActivity"/>
+        <activity android:name="com.szw.framelibrary.view.preview.PreviewActivity"/>
 
 
-        <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="59c5ca8d07fe650b7500004b">
-        </meta-data>
-        <meta-data
-            android:name="UMENG_MESSAGE_SECRET"
-            android:value="525ebc3f46ac580c94a408012e8a65ef">
-        </meta-data>
+
     </application>
 
 </manifest>

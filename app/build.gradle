@@ -17,6 +17,8 @@ android {
 
         renderscriptTargetApi 25
         renderscriptSupportModeEnabled true    // Enable RS support
+        javaCompileOptions
+                { annotationProcessorOptions { includeCompileClasspath = true } }
     }
     buildTypes {
         release {
@@ -59,10 +61,10 @@ dependencies {
     compile rootProject.ext.SimpleDraweeView
     //回调
     compile rootProject.ext.rxbus
-    //注解
-    compile rootProject.ext.butterknife
-    //注解附件
-    compile rootProject.ext.butterknifeCompiler
+//    //注解
+//    compile rootProject.ext.butterknife
+//    //注解附件
+//    annotationProcessor rootProject.ext.butterknifeCompiler
     //okHttp
     compile rootProject.ext.okgo
     //解析json
@@ -80,7 +82,7 @@ dependencies {
     compile rootProject.ext.FlycoRoundview_Lib
     //加载图片
     compile rootProject.ext.glide
-    annotationProcessor  rootProject.ext.glideCompiler
+    annotationProcessor rootProject.ext.glideCompiler
     compile rootProject.ext.ImagePicker
     compile rootProject.ext.gif
     compile rootProject.ext.circleimageview

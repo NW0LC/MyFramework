@@ -7,10 +7,12 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Parcelable
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -43,7 +45,7 @@ class PreviewActivity<T : PreviewObject> : BaseActivity(), View.OnClickListener,
     private var imgUrls=ArrayList<T>()
     private var imgUrlsStrs= ArrayList<String>()
     private var resultPosition= ArrayList<Any>()
-    lateinit var mPagerAdapter: FragmentPagerAdapter
+    lateinit var mPagerAdapter: FragmentStatePagerAdapter
     private var isStrs: Boolean = false
 
 
@@ -108,13 +110,17 @@ class PreviewActivity<T : PreviewObject> : BaseActivity(), View.OnClickListener,
     }
 
     private fun initPager() {
-        mPagerAdapter = object : FragmentPagerAdapter(supportFragmentManager) {
+        mPagerAdapter = object : FragmentStatePagerAdapter(supportFragmentManager) {
             override fun getItem(position: Int): Fragment {
                 return fragments.get(position)
             }
 
             override fun getCount(): Int {
                 return fragments.size
+            }
+
+            override fun getItemPosition(`object`: Any?): Int {
+                return PagerAdapter.POSITION_NONE
             }
         }
         mPreview_viewpager.offscreenPageLimit = fragments.size
@@ -163,7 +169,7 @@ class PreviewActivity<T : PreviewObject> : BaseActivity(), View.OnClickListener,
         materialDialog.setTitle("提示").setPositiveButton("确定") {
             materialDialog.dismiss()
             val intent = Intent()
-            if (position < imgUrls?.size?:0) {
+            Log.i("ppppp",position.toString()+"+"+imgUrls?.size)
                 if (isStrs) {
                     resultPosition.add(imgUrlsStrs[position])
                     imgUrlsStrs.removeAt(position)
@@ -181,7 +187,7 @@ class PreviewActivity<T : PreviewObject> : BaseActivity(), View.OnClickListener,
                 }
 
                 mPagerAdapter.notifyDataSetChanged()
-            }
+
             setResult(Activity.RESULT_OK, intent)
             if (fragments.size == 0) {
                 this@PreviewActivity.finish()

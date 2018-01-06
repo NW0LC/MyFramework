@@ -9,8 +9,8 @@ android {
         applicationId "cn.com.szw.demo"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 101
+        versionName "1.0.1"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         renderscriptTargetApi 25
@@ -40,9 +40,11 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 
-//    compile 'com.github.NW0LC:KtFramework:1.0.0'
+//    compile 'com.github.NW0LC:KtFramework:1.1.6'
 //        compile project (':app')
         compile project (':Flibrary')
+
+    compile 'com.github.czy1121:update:1.1.1'
 
 
 }

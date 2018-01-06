@@ -36,41 +36,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <LinearLayout
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:id="@+id/collapse"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <android.support.design.widget.CollapsingToolbarLayout
-                        android:id="@+id/collapse"
+                    app:titleEnabled="false"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                    <RelativeLayout
+                        android:id="@+id/panel_lyt"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:titleEnabled="false"
-                        app:contentScrim="?attr/colorPrimary"
-                        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
-
-                        <RelativeLayout
-                            android:id="@+id/panel_lyt"
-                            android:layout_width="match_parent"
-                            android:layout_height="170dp"
-                            android:layout_marginTop="200dp"
-                            android:orientation="vertical"
-                            android:layout_gravity="bottom"
-                            android:background="#a1a2f752"
-                            >
-
-                        </RelativeLayout>
-
-                    </android.support.design.widget.CollapsingToolbarLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="170dp"
+                        android:layout_marginTop="200dp"
                         android:orientation="vertical"
-                        android:background="@color/app_bg"
-                        android:paddingBottom="0dp"
-                        app:layout_scrollFlags="scroll">
-                    </LinearLayout>
-                </LinearLayout>
+                        android:layout_gravity="bottom"
+                        android:background="#a1a2f752"
+                        >
+
+                    </RelativeLayout>
+
+                </android.support.design.widget.CollapsingToolbarLayout>
                 <LinearLayout
                     android:background="#b3404040"
                     android:layout_width="match_parent"
